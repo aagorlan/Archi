@@ -1,26 +1,38 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Выгрузка представлений (View) моделей Archi в PDF.
+Представления (View) моделей Archi в PDF: встроенный рендер, проверка, манифест.
 
 Правило репозитория: любое изменение представления в схеме обязано сопровождаться
 обновлением его PDF-представления. Файл кладётся в папку проекта под именем
     <проект>_<имя представления>.pdf
 где «проект» — имя папки верхнего уровня, в которой лежит файл `.archimate`.
 
+Выгрузить представления можно двумя способами:
+
+  1. Самим Archi (основной, картинка ровно как в редакторе) —
+     `tools/archi_export_views.sh` (Archi + плагин jArchi), после чего
+     `python3 tools/archi_export_pdf.py --adopt` вносит файлы в манифест.
+  2. Встроенным рендером этого скрипта (резервный: CI, машина без Archi).
+
+Актуальность проверяется по манифесту `pdf-представления.json`: в нём хранится
+отпечаток схемы на момент выгрузки, поэтому проверка не зависит от того, чем
+нарисован PDF.
+
 Использование:
-    python3 tools/archi_export_pdf.py                       # все модели репозитория
+    python3 tools/archi_export_pdf.py                       # резервный рендер всех схем
     python3 tools/archi_export_pdf.py "Склады/WMS.archimate"
     python3 tools/archi_export_pdf.py "Склады/WMS.archimate" --view "Целевая архитектура"
-    python3 tools/archi_export_pdf.py --check               # проверка актуальности (CI/хук)
+    python3 tools/archi_export_pdf.py --check               # проверка (CI/хук)
+    python3 tools/archi_export_pdf.py --adopt               # зафиксировать выгрузку Archi
     python3 tools/archi_export_pdf.py --list                # перечислить ожидаемые файлы
 
-Выгрузка детерминирована: один и тот же `.archimate` даёт побайтово одинаковый PDF,
-поэтому `--check` умеет отличать устаревшее представление от актуального.
-
-Зависимостей нет — рисование берёт на себя `tools/minipdf.py`.
+Встроенный рендер детерминирован: один и тот же `.archimate` даёт побайтово
+одинаковый PDF. Зависимостей нет — рисование берёт на себя `tools/minipdf.py`.
 """
 import argparse
+import hashlib
+import json
 import os
 import sys
 import zipfile
@@ -119,7 +131,7 @@ class Model(object):
                 'type': t,
                 'name': el.get('name') or '',
                 'documentation': (el.findtext('documentation') or ''),
-                'properties': {p.get('key'): (p.get('value') or '')
+                'properties': {(p.get('key') or ''): (p.get('value') or '')
                                for p in el.findall('property')},
                 'source': el.get('source'),
                 'target': el.get('target'),
@@ -776,18 +788,22 @@ def draw_connection(page, model, conn, src, dst, font, off_x, off_y):
 
 
 # --------------------------------------------------------------------------
-#  Файлы и запуск
+#  Файлы, манифест и запуск
 # --------------------------------------------------------------------------
 
-def project_of(model_path):
-    """Имя проекта — папка верхнего уровня относительно корня репозитория."""
-    rel = os.path.relpath(model_path, repo_root())
-    parts = rel.replace(os.sep, '/').split('/')
-    return parts[0] if len(parts) > 1 else os.path.splitext(parts[0])[0]
+MANIFEST = 'pdf-представления.json'
+RENDERERS = ('archi', 'python')
 
 
 def repo_root():
     return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+def project_of(model_path):
+    """Имя проекта — папка верхнего уровня относительно корня репозитория."""
+    rel = os.path.relpath(os.path.abspath(model_path), repo_root())
+    parts = rel.replace(os.sep, '/').split('/')
+    return parts[0] if len(parts) > 1 else os.path.splitext(parts[0])[0]
 
 
 def safe_name(name):
@@ -802,6 +818,110 @@ def pdf_path(model_path, view_name, out_dir=None):
     folder = out_dir or os.path.dirname(os.path.abspath(model_path))
     return os.path.join(folder, '%s_%s.pdf' % (safe_name(project), safe_name(view_name)))
 
+
+def rel(path):
+    return os.path.relpath(os.path.abspath(path), repo_root()).replace(os.sep, '/')
+
+
+# --- отпечаток представления ----------------------------------------------
+
+def canonical_xml(node):
+    """Устойчивая к порядку атрибутов сериализация поддерева."""
+    out = ['<', node.tag]
+    for k in sorted(node.attrib):
+        out.append(' %s=%s' % (k, node.attrib[k]))
+    out.append('>')
+    if node.text and node.text.strip():
+        out.append(node.text.strip())
+    for child in node:
+        out.append(canonical_xml(child))
+    out.append('</%s>' % node.tag)
+    return ''.join(out)
+
+
+def view_fingerprint(model, view):
+    """Отпечаток всего, что влияет на картинку: геометрия, стили, подписи, картинки.
+
+    Отпечаток не зависит от того, чем нарисован PDF (Archi или встроенный
+    рендер), поэтому по нему одинаково проверяются оба способа выгрузки.
+    """
+    h = hashlib.sha256()
+    h.update(canonical_xml(view).encode('utf-8'))
+
+    element_ids, relation_ids, images = set(), set(), set()
+    for ch in view.iter('child'):
+        if ch.get('archimateElement'):
+            element_ids.add(ch.get('archimateElement'))
+        if ch.get('imagePath'):
+            images.add(ch.get('imagePath'))
+    for conn in view.iter('sourceConnection'):
+        if conn.get('archimateRelationship'):
+            relation_ids.add(conn.get('archimateRelationship'))
+
+    for eid in sorted(element_ids):
+        el = model.elements.get(eid)
+        if el:
+            h.update(('E|%s|%s|%s|%s|%s' % (
+                eid, el['type'], el['name'], el['documentation'],
+                '|'.join('%s=%s' % kv for kv in sorted(el['properties'].items()))
+            )).encode('utf-8'))
+    for rid in sorted(relation_ids):
+        r = model.relations.get(rid)
+        if r:
+            h.update(('R|%s|%s|%s' % (rid, r['type'], r['name'])).encode('utf-8'))
+    for path in sorted(images):
+        data = model.images.get(path)
+        if data:
+            h.update(('I|%s|%s' % (path, hashlib.sha256(data).hexdigest())).encode('utf-8'))
+    return h.hexdigest()
+
+
+def file_hash(path):
+    h = hashlib.sha256()
+    with open(path, 'rb') as fh:
+        for chunk in iter(lambda: fh.read(65536), b''):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+# --- манифест ---------------------------------------------------------------
+
+MANIFEST_NOTE = ('Реестр PDF-представлений: отпечаток схемы на момент выгрузки. '
+                 'Файл обновляют инструменты, руками не правят. '
+                 'См. docs/05-Правило-PDF-представлений.md')
+
+
+def manifest_path():
+    return os.path.join(repo_root(), MANIFEST)
+
+
+def load_manifest():
+    try:
+        with open(manifest_path(), encoding='utf-8') as fh:
+            return json.load(fh).get('представления', {})
+    except (IOError, ValueError):
+        return {}
+
+
+def save_manifest(entries):
+    data = {'описание': MANIFEST_NOTE,
+            'представления': {k: entries[k] for k in sorted(entries)}}
+    with open(manifest_path(), 'w', encoding='utf-8') as fh:
+        json.dump(data, fh, ensure_ascii=False, indent=2, sort_keys=False)
+        fh.write('\n')
+
+
+def manifest_entry(model, view_name, fingerprint, target, renderer):
+    return {
+        'модель': model.rel_path,
+        'представление': view_name,
+        'отпечаток': fingerprint,
+        'pdf': file_hash(target),
+        'рендер': renderer,
+    }
+
+
+# --- сборка PDF встроенным рендером -----------------------------------------
 
 def build_pdf_bytes(model, view, font_path, font_bold_path, tmp_path):
     project = project_of(model.path)
@@ -818,7 +938,7 @@ def build_pdf_bytes(model, view, font_path, font_bold_path, tmp_path):
 
 def find_models(paths):
     if paths:
-        return [p for p in paths]
+        return list(paths)
     found = []
     for dirpath, dirnames, names in os.walk(repo_root()):
         dirnames[:] = [d for d in dirnames if d != '.git']
@@ -828,55 +948,116 @@ def find_models(paths):
     return sorted(found)
 
 
+def find_orphans(expected):
+    """PDF, которым больше не соответствует ни одно представление."""
+    keep = set(os.path.abspath(p) for p in expected)
+    out = []
+    for dirpath, dirnames, names in os.walk(repo_root()):
+        dirnames[:] = [d for d in dirnames if d != '.git']
+        for n in names:
+            full = os.path.join(dirpath, n)
+            if n.endswith('.pdf') and os.path.abspath(full) not in keep:
+                out.append(full)
+    return sorted(out)
+
+
+# --------------------------------------------------------------------------
+#  Запуск
+# --------------------------------------------------------------------------
+
 def main():
-    ap = argparse.ArgumentParser(description='Выгрузка представлений Archi в PDF')
+    ap = argparse.ArgumentParser(
+        description='Представления Archi в PDF: встроенный рендер, проверка и манифест',
+        epilog='Точную картинку Archi даёт tools/archi_export_views.sh (Archi + jArchi), '
+               'после него достаточно --adopt.')
     ap.add_argument('files', nargs='*', help='файлы .archimate (по умолчанию — все)')
-    ap.add_argument('--view', default=None, help='выгрузить только это представление')
-    ap.add_argument('--out', default=None, help='каталог вывода (по умолчанию — папка проекта)')
+    ap.add_argument('--view', default=None, help='обработать только это представление')
+    ap.add_argument('--out', default=None,
+                    help='каталог вывода (по умолчанию — папка проекта); манифест не пишется')
     ap.add_argument('--check', action='store_true',
-                    help='только проверить актуальность PDF, ничего не записывать')
+                    help='проверить актуальность представлений по манифесту, ничего не писать')
+    ap.add_argument('--adopt', action='store_true',
+                    help='зафиксировать в манифесте уже существующие PDF '
+                         '(после выгрузки из Archi)')
+    ap.add_argument('--renderer', choices=RENDERERS, default='archi',
+                    help='чем выгружены PDF при --adopt (по умолчанию archi)')
+    ap.add_argument('--force', action='store_true',
+                    help='перерисовать встроенным рендером даже те PDF, '
+                         'что выгружены из Archi')
     ap.add_argument('--list', action='store_true', help='перечислить ожидаемые PDF')
     ap.add_argument('--font', default=None, help='путь к TTF основного шрифта')
     ap.add_argument('--font-bold', default=None, help='путь к TTF полужирного шрифта')
     ap.add_argument('--quiet', action='store_true')
     args = ap.parse_args()
 
-    font_path = args.font or find_font()
-    font_bold_path = args.font_bold or find_font(bold=True)
+    manifest = load_manifest()
+    updated = dict(manifest)
+    expected, problems, written, adopted = [], [], [], []
+    keep_manifest = not args.out
 
-    models = find_models(args.files)
-    stale, written, expected = [], [], []
+    font_path = font_bold_path = None
+    if not (args.check or args.list or args.adopt):
+        font_path = args.font or find_font()
+        font_bold_path = args.font_bold or find_font(bold=True)
     tmp_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.export.tmp.pdf')
 
-    for mp in models:
-        model = Model(mp)
+    for model_path in find_models(args.files):
+        model = Model(model_path)
         for view in model.views():
             name = view.get('name') or 'View'
             if args.view and name != args.view:
                 continue
-            target = pdf_path(mp, name, args.out)
+            target = pdf_path(model_path, name, args.out)
             expected.append(target)
+            key = rel(target)
+            entry = manifest.get(key)
+            fingerprint = view_fingerprint(model, view)
+
             if args.list:
-                print(os.path.relpath(target, repo_root()))
+                print(key)
                 continue
+
+            if args.check:
+                problems.extend(check_one(key, target, entry, fingerprint))
+                continue
+
+            if args.adopt:
+                if not os.path.exists(target):
+                    problems.append('НЕТ ФАЙЛА:   %s' % key)
+                    continue
+                updated[key] = manifest_entry(model, name, fingerprint, target,
+                                              args.renderer)
+                adopted.append(key)
+                if not args.quiet:
+                    print('зафиксировано (%s) %s' % (args.renderer, key))
+                continue
+
+            # обычный прогон: рисуем встроенным рендером
+            if (entry and entry.get('рендер') == 'archi' and not args.force
+                    and os.path.exists(target)):
+                if entry.get('отпечаток') == fingerprint:
+                    if not args.quiet:
+                        print('= %s (выгружено из Archi)' % key)
+                else:
+                    problems.append(
+                        'УСТАРЕЛО (выгружено из Archi, нужен повторный экспорт '
+                        'tools/archi_export_views.sh): %s' % key)
+                continue
+
             data = build_pdf_bytes(model, view, font_path, font_bold_path, tmp_path)
             old = None
             if os.path.exists(target):
                 with open(target, 'rb') as fh:
                     old = fh.read()
-            if old == data:
-                if not args.quiet and not args.check:
-                    print('= %s' % os.path.relpath(target, repo_root()))
-                continue
-            if args.check:
-                stale.append(target)
-                continue
-            with open(target, 'wb') as fh:
-                fh.write(data)
-            written.append(target)
+            if old != data:
+                with open(target, 'wb') as fh:
+                    fh.write(data)
+                written.append(key)
+            if keep_manifest:
+                updated[key] = manifest_entry(model, name, fingerprint, target, 'python')
             if not args.quiet:
-                print('%s %s' % ('+' if old is None else '~',
-                                 os.path.relpath(target, repo_root())))
+                mark = '=' if old == data else ('+' if old is None else '~')
+                print('%s %s' % (mark, key))
 
     if os.path.exists(tmp_path):
         os.remove(tmp_path)
@@ -884,33 +1065,52 @@ def main():
     if args.list:
         return 0
 
-    # осиротевшие файлы: PDF есть, а представления с таким именем уже нет
-    orphans = []
-    if not args.view and not args.files and not args.out:
-        keep = set(os.path.abspath(p) for p in expected)
-        for dirpath, dirnames, names in os.walk(repo_root()):
-            dirnames[:] = [d for d in dirnames if d != '.git']
-            for n in names:
-                if n.endswith('.pdf') and os.path.abspath(os.path.join(dirpath, n)) not in keep:
-                    orphans.append(os.path.join(dirpath, n))
+    whole_repo = not args.files and not args.view and not args.out
+    orphans = find_orphans(expected) if whole_repo else []
 
     if args.check:
-        for p in stale:
-            print('УСТАРЕЛО: %s' % os.path.relpath(p, repo_root()))
         for p in orphans:
-            print('ЛИШНИЙ:   %s' % os.path.relpath(p, repo_root()))
-        if stale or orphans:
-            print('\nПредставления не соответствуют схемам. Выполните: '
-                  'python3 tools/archi_export_pdf.py')
+            problems.append('ЛИШНИЙ:      %s' % rel(p))
+        for line in problems:
+            print(line)
+        if problems:
+            print('\nПредставления не соответствуют схемам. Обновите их:\n'
+                  '  tools/archi_export_views.sh            # точная выгрузка из Archi\n'
+                  '  python3 tools/archi_export_pdf.py      # резервный встроенный рендер')
             return 1
         print('Все представления актуальны (%d шт.).' % len(expected))
         return 0
 
+    if keep_manifest and whole_repo:
+        for key in list(updated):
+            if key not in {rel(p) for p in expected}:
+                del updated[key]                      # ушедшие представления
+    if keep_manifest and updated != manifest:
+        save_manifest(updated)
+
     if not args.quiet:
-        print('\nОбновлено: %d из %d' % (len(written), len(expected)))
+        if args.adopt:
+            print('\nЗафиксировано в манифесте: %d из %d' % (len(adopted), len(expected)))
+        else:
+            print('\nОбновлено: %d из %d' % (len(written), len(expected)))
         for p in orphans:
-            print('ЛИШНИЙ (нет такого представления): %s' % os.path.relpath(p, repo_root()))
-    return 0
+            print('ЛИШНИЙ (нет такого представления): %s' % rel(p))
+    for line in problems:                      # ошибки печатаются и в тихом режиме
+        print(line)
+    return 1 if problems else 0
+
+
+def check_one(key, target, entry, fingerprint):
+    """Проверка одного представления по манифесту."""
+    if not os.path.exists(target):
+        return ['НЕТ ФАЙЛА:   %s' % key]
+    if not entry:
+        return ['НЕ В РЕЕСТРЕ: %s' % key]
+    if entry.get('отпечаток') != fingerprint:
+        return ['УСТАРЕЛО:    %s' % key]
+    if entry.get('pdf') != file_hash(target):
+        return ['ПРАВЛЕН РУКАМИ: %s' % key]
+    return []
 
 
 if __name__ == '__main__':

@@ -16,13 +16,23 @@ python3 tools/archi_metrics.py "Склады/WMS.archimate"                 # о
 python3 tools/archi_metrics.py "Склады/WMS.archimate" --view "Целевая архитектура"
 ```
 
-Инструмент выгрузки представлений в PDF: [`tools/archi_export_pdf.py`](../tools/archi_export_pdf.py)
-(рисование — [`tools/minipdf.py`](../tools/minipdf.py), внешних зависимостей нет).
+Выгрузка представлений в PDF силами самого Archi (Archi 5.x + плагин jArchi 1.7+):
+[`tools/archi_export_views.sh`](../tools/archi_export_views.sh) и
+[`tools/export_views.js`](../tools/export_views.js).
+
+```bash
+tools/archi_export_views.sh                                           # все представления
+```
+
+Резервный рендер без Archi и без внешних зависимостей:
+[`tools/archi_export_pdf.py`](../tools/archi_export_pdf.py)
+(рисование — [`tools/minipdf.py`](../tools/minipdf.py)).
 
 ```bash
 python3 tools/archi_export_pdf.py                                     # все представления
 python3 tools/archi_export_pdf.py "Склады/WMS.archimate"              # одна модель
 python3 tools/archi_export_pdf.py --check                             # проверка актуальности
+python3 tools/archi_export_pdf.py --adopt                             # зафиксировать выгрузку Archi
 ```
 
 PDF-представления лежат в папках проектов под именем `<проект>_<имя представления>.pdf`

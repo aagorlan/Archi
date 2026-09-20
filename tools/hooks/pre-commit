@@ -14,6 +14,9 @@ echo "Проверка актуальности PDF-представлений..
 if ! python3 tools/archi_export_pdf.py --check; then
     echo
     echo "Коммит остановлен: представления не соответствуют схемам."
-    echo "Выполните: python3 tools/archi_export_pdf.py && git add '*.pdf'"
+    echo "Выгрузите их заново и добавьте в коммит:"
+    echo "  tools/archi_export_views.sh        # точная выгрузка силами Archi (нужен jArchi)"
+    echo "  python3 tools/archi_export_pdf.py  # резервный встроенный рендер"
+    echo "  git add '*.pdf' pdf-представления.json"
     exit 1
 fi
