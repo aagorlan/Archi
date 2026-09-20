@@ -792,7 +792,9 @@ def draw_connection(page, model, conn, src, dst, font, off_x, off_y):
 # --------------------------------------------------------------------------
 
 MANIFEST = 'pdf-представления.json'
-RENDERERS = ('archi', 'python')
+# archi — векторная выгрузка через jArchi; archi-report — картинка из HTML-отчёта
+# Archi; python — резервный встроенный рендер.
+RENDERERS = ('archi', 'archi-report', 'python')
 
 
 def repo_root():
@@ -1044,15 +1046,16 @@ def main():
                 continue
 
             # обычный прогон: рисуем встроенным рендером
-            if (entry and entry.get('рендер') == 'archi' and not args.force
-                    and os.path.exists(target)):
+            made_by_archi = str((entry or {}).get('рендер', '')).startswith('archi')
+            if entry and made_by_archi and not args.force and os.path.exists(target):
                 if entry.get('отпечаток') == fingerprint:
                     if not args.quiet:
                         print('= %s (выгружено из Archi)' % key)
                 else:
                     problems.append(
                         'УСТАРЕЛО (выгружено из Archi, нужен повторный экспорт '
-                        'tools/archi_export_views.sh): %s' % key)
+                        'tools/archi_export_views.sh или tools/archi_export_report.sh): '
+                        '%s' % key)
                 continue
 
             data = build_pdf_bytes(model, view, font_path, font_bold_path, tmp_path)

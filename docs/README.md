@@ -16,13 +16,17 @@ python3 tools/archi_metrics.py "Склады/WMS.archimate"                 # о
 python3 tools/archi_metrics.py "Склады/WMS.archimate" --view "Целевая архитектура"
 ```
 
-Выгрузка представлений в PDF силами самого Archi (Archi 5.x + плагин jArchi 1.7+):
-[`tools/archi_export_views.sh`](../tools/archi_export_views.sh) и
-[`tools/export_views.js`](../tools/export_views.js).
+Выгрузка представлений в PDF силами самого Archi:
 
 ```bash
-tools/archi_export_views.sh                                           # все представления
+tools/archi_export_views.sh     # Archi + плагин jArchi: векторный PDF с текстом
+tools/archi_export_report.sh    # Archi без плагина: картинка из HTML-отчёта Archi
 ```
+
+Скрипты: [`tools/archi_export_views.sh`](../tools/archi_export_views.sh) с
+[`tools/export_views.js`](../tools/export_views.js) и
+[`tools/archi_export_report.sh`](../tools/archi_export_report.sh) с
+[`tools/archi_report_pdf.py`](../tools/archi_report_pdf.py).
 
 Резервный рендер без Archi и без внешних зависимостей:
 [`tools/archi_export_pdf.py`](../tools/archi_export_pdf.py)

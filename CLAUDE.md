@@ -11,7 +11,8 @@
 нужны Archi 5.x и плагин jArchi 1.7+:
 
 ```bash
-tools/archi_export_views.sh                # выгрузка всех представлений силами Archi
+tools/archi_export_views.sh     # Archi + jArchi: векторный PDF с текстом
+tools/archi_export_report.sh    # Archi без плагина: картинка из HTML-отчёта Archi
 ```
 
 Резервный способ, когда Archi недоступен (CI, чужая машина) — встроенный рендер:
