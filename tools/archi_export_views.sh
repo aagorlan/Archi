@@ -49,6 +49,12 @@ fi
 
 echo "Archi: $ARCHI"
 
+# Журнал: скрипт jArchi пишет в него каждый созданный PDF. По журналу в манифесте
+# отмечаются ровно те файлы, которые действительно выгрузил Archi.
+ARCHI_EXPORT_LOG=$(mktemp)
+export ARCHI_EXPORT_LOG
+trap 'rm -f "$ARCHI_EXPORT_LOG"' EXIT
+
 find . -name '*.archimate' -not -path './.git/*' | sort | while read -r model; do
     echo "== $model"
     # shellcheck disable=SC2086
@@ -56,6 +62,12 @@ find . -name '*.archimate' -not -path './.git/*' | sort | while read -r model; d
         --loadModel "$model" --script.runScript "$ROOT/tools/export_views.js"
 done
 
+exported=$(grep -c . "$ARCHI_EXPORT_LOG" 2>/dev/null || echo 0)
+if [ "$exported" -eq 0 ]; then
+    echo "Archi не выгрузил ни одного представления — проверьте плагин jArchi 1.7+." >&2
+    exit 3
+fi
+
 echo
-echo "Фиксация представлений в манифесте..."
-python3 tools/archi_export_pdf.py --adopt --renderer archi
+echo "Выгружено представлений: $exported. Фиксация в манифесте..."
+python3 tools/archi_export_pdf.py --adopt --renderer archi --only-listed "$ARCHI_EXPORT_LOG"

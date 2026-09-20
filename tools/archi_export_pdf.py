@@ -981,6 +981,10 @@ def main():
                          '(после выгрузки из Archi)')
     ap.add_argument('--renderer', choices=RENDERERS, default='archi',
                     help='чем выгружены PDF при --adopt (по умолчанию archi)')
+    ap.add_argument('--only-listed', default=None, metavar='ФАЙЛ',
+                    help='обработать только PDF, перечисленные в файле (по одному пути '
+                         'в строке) — так tools/archi_export_views.sh фиксирует ровно то, '
+                         'что выгрузил Archi')
     ap.add_argument('--force', action='store_true',
                     help='перерисовать встроенным рендером даже те PDF, '
                          'что выгружены из Archi')
@@ -989,6 +993,11 @@ def main():
     ap.add_argument('--font-bold', default=None, help='путь к TTF полужирного шрифта')
     ap.add_argument('--quiet', action='store_true')
     args = ap.parse_args()
+
+    only = None
+    if args.only_listed:
+        with open(args.only_listed, encoding='utf-8') as fh:
+            only = {os.path.abspath(line.strip()) for line in fh if line.strip()}
 
     manifest = load_manifest()
     updated = dict(manifest)
@@ -1008,6 +1017,8 @@ def main():
             if args.view and name != args.view:
                 continue
             target = pdf_path(model_path, name, args.out)
+            if only is not None and os.path.abspath(target) not in only:
+                continue
             expected.append(target)
             key = rel(target)
             entry = manifest.get(key)
@@ -1065,7 +1076,7 @@ def main():
     if args.list:
         return 0
 
-    whole_repo = not args.files and not args.view and not args.out
+    whole_repo = not (args.files or args.view or args.out or args.only_listed)
     orphans = find_orphans(expected) if whole_repo else []
 
     if args.check:

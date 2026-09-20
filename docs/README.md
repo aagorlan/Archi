@@ -35,5 +35,9 @@ python3 tools/archi_export_pdf.py --check                             # пров
 python3 tools/archi_export_pdf.py --adopt                             # зафиксировать выгрузку Archi
 ```
 
+На сервере то же самое делает CI:
+[`.github/workflows/pdf-representations.yml`](../.github/workflows/pdf-representations.yml)
+ставит на раннер Archi с jArchi, выгружает представления и коммитит их в ветку.
+
 PDF-представления лежат в папках проектов под именем `<проект>_<имя представления>.pdf`
 и обновляются вместе со схемой — см. [правило](05-Правило-PDF-представлений.md).

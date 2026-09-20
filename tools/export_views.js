@@ -26,6 +26,13 @@
 var OPTIONS = { textAsShapes: false, embedFonts: true, textOffsetWorkaround: false };
 
 var File = Java.type('java.io.File');
+var System = Java.type('java.lang.System');
+var FileOutputStream = Java.type('java.io.FileOutputStream');
+var OutputStreamWriter = Java.type('java.io.OutputStreamWriter');
+
+// Путь журнала выгрузки: в него построчно пишутся созданные PDF, чтобы
+// tools/archi_export_pdf.py --adopt отметил в манифесте ровно их и ничего лишнего.
+var LOG_PATH = System.getenv('ARCHI_EXPORT_LOG');
 
 function safeName(name) {
     var out = String(name === null || name === undefined ? '' : name)
@@ -54,6 +61,8 @@ function safeName(name) {
         views = $('archimate-diagram-model');
     }
 
+    var log = LOG_PATH ? new OutputStreamWriter(new FileOutputStream(LOG_PATH, true), 'UTF-8')
+                       : null;
     var count = 0;
     var failed = 0;
     views.each(function (view) {
@@ -61,6 +70,9 @@ function safeName(name) {
         try {
             currentModel.renderViewToPDF(view, target.getAbsolutePath(), OPTIONS);
             console.log('+ ' + target.getAbsolutePath());
+            if (log) {
+                log.write(target.getAbsolutePath() + '\n');
+            }
             count++;
         } catch (e) {
             failed++;
@@ -71,6 +83,10 @@ function safeName(name) {
             }
         }
     });
+
+    if (log) {
+        log.close();
+    }
 
     console.log(project + ': выгружено представлений — ' + count
                 + (failed ? ', с ошибкой — ' + failed : ''));
