@@ -1,0 +1,19 @@
+#!/bin/sh
+# Правило репозитория: изменение представления в схеме обязано сопровождаться
+# обновлением его PDF (docs/05-Правило-PDF-представлений.md).
+#
+# Установка:  git config core.hooksPath tools/hooks
+#
+# Хук срабатывает, только если в коммит попали модели Archi.
+
+if ! git diff --cached --name-only --diff-filter=ACMR | grep -q '\.archimate$'; then
+    exit 0
+fi
+
+echo "Проверка актуальности PDF-представлений..."
+if ! python3 tools/archi_export_pdf.py --check; then
+    echo
+    echo "Коммит остановлен: представления не соответствуют схемам."
+    echo "Выполните: python3 tools/archi_export_pdf.py && git add '*.pdf'"
+    exit 1
+fi
