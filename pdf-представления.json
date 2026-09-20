@@ -5,253 +5,253 @@
       "модель": "CRM/CRM.archimate",
       "представление": "MVP",
       "отпечаток": "92aa24d8995ecaa4160ca9aad19d53e309a44edb8cbbb29fd0b2189664ec47b0",
-      "pdf": "f74b19f738d297be61b3418cb9b5acba6d6075206fe395fc4c8a959567f7e428",
-      "рендер": "python"
+      "pdf": "0d2ee1863a379443e59594102e188297e27886065f287344cbb615fa501b8213",
+      "рендер": "archi-report"
     },
     "CRM/CRM_Актуальное.pdf": {
       "модель": "CRM/CRM.archimate",
       "представление": "Актуальное",
       "отпечаток": "2d9783a58c8178c7635300845edd26d29c3695bf1679bf7d747aef41bb799d8d",
-      "pdf": "b9913602233a892b317bb09d7103d8b13331e051e9304a26e57bff93760d3d23",
-      "рендер": "python"
+      "pdf": "06f72d5594c82ff9d1dc9d7b6b18bda26adb4b9f90156f5b860436fec47e8b59",
+      "рендер": "archi-report"
     },
     "CRM/CRM_Маркетинг (пред MVP).pdf": {
       "модель": "CRM/CRM.archimate",
       "представление": "Маркетинг (пред MVP)",
       "отпечаток": "e06f1da8f713ffe00e5837ec2e59e5daef414359095c931f2e931c9736f2f70b",
-      "pdf": "332614e4930a4812353c5f9fea1aa0d039acbfff97dd1afe7e0d8baabafe390a",
-      "рендер": "python"
+      "pdf": "d00a18ad44020bedf72fdf32fe137f0afb86badd6ac40626e11f841898dbcd61",
+      "рендер": "archi-report"
     },
     "CRM/CRM_Текущее.pdf": {
       "модель": "CRM/CRM.archimate",
       "представление": "Текущее",
       "отпечаток": "40675ac509a0af2ade87d3324804ef248eadccd7dfed1ec22cfbb1f729b18e92",
-      "pdf": "34cd58f95bc109ef2615db65cc3e1511f4ba698d769a2cb9cde3a6059757fef8",
-      "рендер": "python"
+      "pdf": "0de45f8d34da5aecaab267540c40e834ce8eb8ff960cbabb5a33b206ccefc6fd",
+      "рендер": "archi-report"
     },
     "CRM/CRM_Хранение файлов.pdf": {
       "модель": "CRM/CRM.archimate",
       "представление": "Хранение файлов",
       "отпечаток": "850d82349e7693bef7911f6807770b5defad0152cd266921c86f4c07b15274d8",
-      "pdf": "fdf590c3b37cd76e4ab7d7c4b62dbf57add2fcffbbb3fefd13f7b626d6486554",
-      "рендер": "python"
+      "pdf": "cd860d483adfff2ecc285f7a6122437a9bcc28522834c0bab83fddbe31ff41e5",
+      "рендер": "archi-report"
     },
     "CRM/CRM_Целевое+.pdf": {
       "модель": "CRM/CRM.archimate",
       "представление": "Целевое+",
       "отпечаток": "92a2ada3b1ae3426e485a5a14afa30489d3bfb07213f2c377a8ee8a91573e570",
-      "pdf": "80f10bdad68ba79a7fadd6dc8547dfe6c6f51c3d6062e4c63dd5fbce09970462",
-      "рендер": "python"
+      "pdf": "443dd8878c0a671b39b561ddff963c86aa222694f9e8070f5d43b9999d77355e",
+      "рендер": "archi-report"
     },
     "ITAM/ITAM_Актуальное.pdf": {
       "модель": "ITAM/ITAM.archimate",
       "представление": "Актуальное",
       "отпечаток": "18b77d44a7f783fd4219e5f55814d74c72b29bc843388fa29ad72434b3ead889",
-      "pdf": "dc34e33cbbc1aef6c362ec359a37ef213d599e08acc8b44c7e175a3a4f21096e",
-      "рендер": "python"
+      "pdf": "6806ea46fa4ac1b874fefac9d975b7b298535c30f97d01085d3d9b3e8cf1882e",
+      "рендер": "archi-report"
     },
     "ITAM/ITAM_Целевое.pdf": {
       "модель": "ITAM/ITAM.archimate",
       "представление": "Целевое",
       "отпечаток": "ffe404f47574567d4bfe461f0e8a54176daa3cab70aa10f6d80930e76c39df62",
-      "pdf": "d3ba8951f159f19df1d384ca74c6420ae9a5285ef33a75e70a0e87efe8473e84",
-      "рендер": "python"
+      "pdf": "d021e9a9c3ae201c5c072163c4aef0628d5c18ea6dd1514d0ced93d79eb3c01b",
+      "рендер": "archi-report"
     },
     "Jira/Jira_Текущее состояние.pdf": {
       "модель": "Jira/jira.archimate",
       "представление": "Текущее состояние",
       "отпечаток": "574f7b990feca2d62fcac4b5d5ff7dfc3ff92a31bc846e788e3ee20d3578f26a",
-      "pdf": "622be4b1b0e27812289ddeb91f89af8d6d62a962190f3396f093c402e2bee793",
-      "рендер": "python"
+      "pdf": "68ce9f38fb69ff28dee6b6c24934619f8eb351f84abb6d54dafba87ddf73eef4",
+      "рендер": "archi-report"
     },
     "QMS/QMS_MVP.pdf": {
       "модель": "QMS/IQC.archimate",
       "представление": "MVP",
       "отпечаток": "36340704ee4aa25c344b23c7d2c68ef9fb31b3584cb7ae6ded10ed1e8d955d61",
-      "pdf": "92c27d21171345b261d02a72a24282a1a2d449bedd04049ccffcbbcf89d5eb04",
-      "рендер": "python"
+      "pdf": "cae28546c391640945d49392ecabf169647aea0a4b2dbfd2839dd9034f6d9fcd",
+      "рендер": "archi-report"
     },
     "QMS/QMS_Изменение работы.pdf": {
       "модель": "QMS/IQC.archimate",
       "представление": "Изменение работы",
       "отпечаток": "f0030c3d1bd2a17f140ab0d0de2038b37bda5e14801a866671109392dc0c88c6",
-      "pdf": "5b0a44d7290938d17a3dae14d682f2d13dc03607317400ed45a1a87835761991",
-      "рендер": "python"
+      "pdf": "77258d2fe1d9e99cfc9da7758d4974e8e36def9a7765d2e73bdbd7d05ce6283b",
+      "рендер": "archi-report"
     },
     "QMS/QMS_Целевое.pdf": {
       "модель": "QMS/IQC.archimate",
       "представление": "Целевое",
       "отпечаток": "c4d66d6b99f5e2a6f6a74b0bacc9958c4502bc6ccde78c03c671559dc9a3da0f",
-      "pdf": "d1c2089eb26ecfe959a937c1f1d243fceeef2dbb9febe51a8bd8b124c02823f7",
-      "рендер": "python"
+      "pdf": "60079f1cf76323cff0150f512bdbce17236ff6eead682147f8c831a9025a6d3e",
+      "рендер": "archi-report"
     },
     "RPA/RPA_Процесс развертывания робота.pdf": {
       "модель": "RPA/RPA.archimate",
       "представление": "Процесс развертывания робота",
       "отпечаток": "f9b945dadda4ae413489e357ff5fece07f476460d52e55d3e0139717bd56e539",
-      "pdf": "d636373e15efce5605870613333c04b641e28035543054f436c72324352b13a1",
-      "рендер": "python"
+      "pdf": "5d5f903afd0708ef8a5b48f9a20d3d61006141a39b7b242d75b81d824574dbae",
+      "рендер": "archi-report"
     },
     "RPA/RPA_Целевая архитектура.pdf": {
       "модель": "RPA/RPA.archimate",
       "представление": "Целевая архитектура",
       "отпечаток": "321138092692b7588fa65a554972c7e6b5a6431fd0b3f614f5f066d2d40d5084",
-      "pdf": "ee378c2d57661c6d63211263dcce1215d2b40fa39abb077a7193198d8fa2cc79",
-      "рендер": "python"
+      "pdf": "a63a097a9c2fbdcb48fafcc889e600387ceeeeb2928470adf26b782f0ddde1b7",
+      "рендер": "archi-report"
     },
     "SRM/SRM_SRM Закупщики.pdf": {
       "модель": "SRM/SRM v4.archimate",
       "представление": "SRM Закупщики",
       "отпечаток": "cc4e8967126e2c7b825a56b71ba34a0c17d447995b8d1688222cf0048d88cc4a",
-      "pdf": "b797c3a5048d13fa9e7a5abc67c045382d93f4322188fbf35b5ce1e660c977c3",
-      "рендер": "python"
+      "pdf": "8a46dc1006cc4f436d67c1b597e3ed1aa6e4edb39a432929835d0d1741e77f29",
+      "рендер": "archi-report"
     },
     "SRM/SRM_SRM Инициаторы.pdf": {
       "модель": "SRM/SRM v4.archimate",
       "представление": "SRM Инициаторы",
       "отпечаток": "07baaf74b410d65bd222b830a5ad01288ccfe9f534957566e825fda1b9c99c83",
-      "pdf": "5e89e01c691935ca3f865b29d2e0feb85174bf4e2d4682a9be0c393e30c74f63",
-      "рендер": "python"
+      "pdf": "78d05cbfd00b8badd64c25862f4c64d2feeffc791440c075d54ab5df4d4ce1bd",
+      "рендер": "archi-report"
     },
     "SRM/SRM_SRM.pdf": {
       "модель": "SRM/SRM v4.archimate",
       "представление": "SRM",
       "отпечаток": "0ed7c540c6cd25dd6fd5543566dd658fdd33305200a8d766b162db66ce88ed8b",
-      "pdf": "033410f94951a61b9348267f4698e0ffdde523cd44365c88daacbb703987ce48",
-      "рендер": "python"
+      "pdf": "efa72bfb37387bdb1e1d321ec6695b5bd9f2bf6e4792cb756fd97b350eb586da",
+      "рендер": "archi-report"
     },
     "SRM/SRM_Текущее состояние.pdf": {
       "модель": "SRM/SRM.archimate",
       "представление": "Текущее состояние",
       "отпечаток": "c0464d1f14469a63640ba04f8c8bdca6b5fa6bf7572d5e99d4a1b64c61c6952d",
-      "pdf": "76177e0965ae519b78e4fd5e926f3f80930353b0ff08b4fe51325ee811589c22",
-      "рендер": "python"
+      "pdf": "4faf5bcd0f9fc4d2568b07a4e57399e03bc310cd9f23d01c58cae03519e11cc0",
+      "рендер": "archi-report"
     },
     "Архив/Архив_Обработка документов.pdf": {
       "модель": "Архив/АК Архив.archimate",
       "представление": "Обработка документов",
       "отпечаток": "8a43eaccee2fc9e3c93090124adbc075d519348a622d4b80bc3e6878fff8b376",
-      "pdf": "511eb6a78d34806ef3a7cbbec6bd694bb2338df2091205f83991bfc8605d0d9e",
-      "рендер": "python"
+      "pdf": "9638647b778067e3706a1a7e1ea5498575aac197627305bd69cdeeb66a8b99df",
+      "рендер": "archi-report"
     },
     "Архив/Архив_Первый этап (MVP).pdf": {
       "модель": "Архив/АК Архив.archimate",
       "представление": "Первый этап (MVP)",
       "отпечаток": "b0160054da24088515e4065c516afed21d65bb0935e46cc526461833990f93e6",
-      "pdf": "c4e09846e5f291b454508462ecc04bc1d1d86e53b2637b787fd500e2f513c089",
-      "рендер": "python"
+      "pdf": "b33208c45717ea5416fabd6d9e74d31da2f4d9d501ccce54dceeb80c71e9eda7",
+      "рендер": "archi-report"
     },
     "Архив/Архив_Целевая архитектура.pdf": {
       "модель": "Архив/АК Архив.archimate",
       "представление": "Целевая архитектура",
       "отпечаток": "7caf6c3f1afb25d4e5ae0c01667cfb59220cc42eaf47e5e4e3ad1d82519f6116",
-      "pdf": "5055b337a74f21d0f44e661d4ec0016e099978be8bd66506a3d1307a0c382ff1",
-      "рендер": "python"
+      "pdf": "7c30ba6157ca4f0020501df53b76f6381032a4820443456cfa049956c2978bcf",
+      "рендер": "archi-report"
     },
     "Единые сервисы/Единые сервисы_Адресные книги.pdf": {
       "модель": "Единые сервисы/Единые сервисы.archimate",
       "представление": "Адресные книги",
       "отпечаток": "26a4afbfda063670c462f281de917ac570e418b5fe47372256436b6d7449fe1e",
-      "pdf": "cf6cecba9a5d935bd7948cfcc1946d2547e248dab869da4466022474f9b89103",
-      "рендер": "python"
+      "pdf": "c27e5ce56422e4c721da176c9115e87a6a838fb11ce42f8a554703fd6c672dc2",
+      "рендер": "archi-report"
     },
     "Единые сервисы/Единые сервисы_Календари.pdf": {
       "модель": "Единые сервисы/Единые сервисы.archimate",
       "представление": "Календари",
       "отпечаток": "694b2d994b7a0fde38bae74b5ff2ea439b78cae456cb9d0902843cc5f75a1505",
-      "pdf": "6e2b08f39f2356b746fa9108e117755356e43fd3accb64b8eebeb10e6feee3dc",
-      "рендер": "python"
+      "pdf": "5ebafef985db72e4c6a8572a0ce6c68b4d53696be4af4f6b393d7e98a9005bcb",
+      "рендер": "archi-report"
     },
     "Единые сервисы/Единые сервисы_Сервисы.pdf": {
       "модель": "Единые сервисы/Единые сервисы.archimate",
       "представление": "Сервисы",
       "отпечаток": "651ddbc459ee9f3768f84b403dd00adf5d322bdbf742c118137ac42ceeac6417",
-      "pdf": "e25815683884ecef285182d6fd7cb5d1c6ef926efbea78790ca53ec9b14ac344",
-      "рендер": "python"
+      "pdf": "375e8af0f0b5e982dd7dff7d0e2c944f15aa16d750240a15732c89fc1619b3a0",
+      "рендер": "archi-report"
     },
     "Командировки/Командировки_Переход на TRIVIO.pdf": {
       "модель": "Командировки/Командировки.archimate",
       "представление": "Переход на TRIVIO",
       "отпечаток": "941c41dc4d8a6c723da5573f372bea9bbb57987ced1795df00ea0164094a046a",
-      "pdf": "944af0687e54fb7839925fa5c17bc50ec0b329096b2239691d2cb0a0b184e624",
-      "рендер": "python"
+      "pdf": "11e72cd2fd1b2328542e23de20562e987781567efe3d08327c199c67e0e15d62",
+      "рендер": "archi-report"
     },
     "Командировки/Командировки_Текущая.pdf": {
       "модель": "Командировки/Командировки.archimate",
       "представление": "Текущая",
       "отпечаток": "2e18ffad70dfddaa578782748e5ce61c64aa0cb40aa7e2dc6c645a4321340bbe",
-      "pdf": "37b0b1c45aa5aec9c6e53998adf968985f8b58c1610275e88bbab2cf5d17df48",
-      "рендер": "python"
+      "pdf": "a8c24fce5febc46a3ccb286bff65edeaeef7bef437feb98343c5186e23cad980",
+      "рендер": "archi-report"
     },
     "Мобильная платформа/Мобильная платформа_Default View.pdf": {
       "модель": "Мобильная платформа/MP.archimate",
       "представление": "Default View",
       "отпечаток": "0f3b39d3e2019bde7ac95bbf48ac4bdcda587081395753af46ebe2b8450452f1",
-      "pdf": "ccc11da3eaf2b216eeb89824a162d1907ffa382fb4ec2e47ace09826f549ac77",
-      "рендер": "python"
+      "pdf": "2e4e97675c2e08eb950b5c43c62408c00836ad54969f63ae07b6f2c211795694",
+      "рендер": "archi-report"
     },
     "Мониторинг/Мониторинг_Процессы.pdf": {
       "модель": "Мониторинг/Мониторинг.archimate",
       "представление": "Процессы",
       "отпечаток": "af3176173bf47c583bbc787db2d5cbbadf788dedead57c1aaab8445c7f2468e9",
-      "pdf": "deb5d2163d16b27eff0cb4a978c6254486e38dc10af7f5dc688855f382fb669f",
-      "рендер": "python"
+      "pdf": "a283d1f194c5c538747412d0dc0268d5a625240bfc9d15c1778369bab6358273",
+      "рендер": "archi-report"
     },
     "Мониторинг/Мониторинг_Целевое.pdf": {
       "модель": "Мониторинг/Мониторинг.archimate",
       "представление": "Целевое",
       "отпечаток": "384aa5678feb16a8f6da90b73c316a38a9a4f4a5db7c555ae23628bd80f97bb2",
-      "pdf": "0e446cd9e3d439c47fbfbd74ff05331bfd83d8d60856d8bf11752c2dae7ee7ce",
-      "рендер": "python"
+      "pdf": "614a2d59c04a23302085f7ed61105784683ec202a16b0e5858285e88f0a8f3e2",
+      "рендер": "archi-report"
     },
     "Разделение ERP/Разделение ERP_Организационная схема.pdf": {
       "модель": "Разделение ERP/ERP.archimate",
       "представление": "Организационная схема",
       "отпечаток": "112a390aef0a5fdf50e6d1665649b1e2510c6ee0a3b94fbac3053c25ffd82966",
-      "pdf": "e3f44c7550a708c3fb1f38080b8ebcf5dd40f7aa1ffb745999a8f59f5a91597e",
-      "рендер": "python"
+      "pdf": "3c96e6563ff957702078eadfe0a70b93260eba6d396d5de44f91436d020a85cd",
+      "рендер": "archi-report"
     },
     "Разделение ERP/Разделение ERP_Функциональная схема.pdf": {
       "модель": "Разделение ERP/ERP.archimate",
       "представление": "Функциональная схема",
       "отпечаток": "693879525c18aaa154d51170bfc85231cdf677ac23f15761494be9194d3ce5d0",
-      "pdf": "23baa5629ac804ba75fadcca7d8828b6ace2ef944f74b6390d7089236e4ef687",
-      "рендер": "python"
+      "pdf": "39efb1652d0ea29b8a9b7b69bf811b78fd38076dfa9221f52fe27dd08b2cafa6",
+      "рендер": "archi-report"
     },
     "Склады/Склады_География (copy).pdf": {
       "модель": "Склады/WMS.archimate",
       "представление": "География (copy)",
       "отпечаток": "07ade7a92c76d1bc7861f3ccd6125eb4e58d826c1772f86d2e7b77472c9a8417",
-      "pdf": "b36a4c4a7d5850a2fa6968224fa0013c101b2c1f3145e1459a34ae0cd85c9371",
-      "рендер": "python"
+      "pdf": "f4c4ebc2103315f6708457a00b4e25e7da409cb584e4edcba97393486983ab73",
+      "рендер": "archi-report"
     },
     "Склады/Склады_География.pdf": {
       "модель": "Склады/WMS.archimate",
       "представление": "География",
       "отпечаток": "5e571369e6fa67aa8af736a91fc759a4ed33abac2c00025e8a1e9192b39813a8",
-      "pdf": "a62bd9251d0196787bf2ad4c99a70d1b8a0fc07c8d297403a2e19b22816491af",
-      "рендер": "python"
+      "pdf": "21659d9c54addd6a194961c2f4cc18f1e2854e671b3d7bdeddf405b69b390d6e",
+      "рендер": "archi-report"
     },
     "Склады/Склады_Текущая архитектура.pdf": {
       "модель": "Склады/WMS.archimate",
       "представление": "Текущая архитектура",
       "отпечаток": "a38628459ddc12a56f9262c51341889c0c9d522de298d0f47d7708ea92324059",
-      "pdf": "dc170255b4a7dc8d17232a6ab90c7c86ac3ea0ebb2615327484e655fc1cf79f9",
-      "рендер": "python"
+      "pdf": "ab34ab33b31c15c77a3d24bb5f33e8bbee95e174eed75ceaf33a9f13a5668454",
+      "рендер": "archi-report"
     },
     "Склады/Склады_Целевая архитектура.pdf": {
       "модель": "Склады/WMS.archimate",
       "представление": "Целевая архитектура",
       "отпечаток": "39d07ed52198f17203ffe61573991897166579e3bcfc5b9c2a24ec45e68792e4",
-      "pdf": "11627ad35571707934a22b5372e1652d2845ed0fb1cef58041163bde036cd70c",
-      "рендер": "python"
+      "pdf": "d8467762f0e0b8b00b62c78a77e507c274b4967647648467afaf1e8b9d4e1ae4",
+      "рендер": "archi-report"
     },
     "ТОиР/ТОиР_Целевая архитектура.pdf": {
       "модель": "ТОиР/MRO.archimate",
       "представление": "Целевая архитектура",
       "отпечаток": "0c5b246ffdf28dddd4c305fb0d9464e14e1a6e7d1bb1a20638b5036ba0e050d4",
-      "pdf": "c51878676c249b867aaad95b6f9cf80c1dab269314171bb31058bb4ee87cb91a",
-      "рендер": "python"
+      "pdf": "24b0c496fc8c31d6c9c77c2e63414fdc4fde46d57c17deccac487c8a2811c467",
+      "рендер": "archi-report"
     }
   }
 }
