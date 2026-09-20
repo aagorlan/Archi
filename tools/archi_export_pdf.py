@@ -942,20 +942,25 @@ def find_models(paths):
     if paths:
         return list(paths)
     found = []
-    for dirpath, dirnames, names in os.walk(repo_root()):
-        dirnames[:] = [d for d in dirnames if d != '.git']
+    for dirpath, dirnames, names in walk_repo():
         for n in names:
             if n.endswith('.archimate'):
                 found.append(os.path.join(dirpath, n))
     return sorted(found)
 
 
+def walk_repo():
+    """Обход репозитория без служебных каталогов (.git, .archi-dist и прочих на точку)."""
+    for dirpath, dirnames, names in os.walk(repo_root()):
+        dirnames[:] = [d for d in dirnames if not d.startswith('.')]
+        yield dirpath, dirnames, names
+
+
 def find_orphans(expected):
     """PDF, которым больше не соответствует ни одно представление."""
     keep = set(os.path.abspath(p) for p in expected)
     out = []
-    for dirpath, dirnames, names in os.walk(repo_root()):
-        dirnames[:] = [d for d in dirnames if d != '.git']
+    for dirpath, _dirnames, names in walk_repo():
         for n in names:
             full = os.path.join(dirpath, n)
             if n.endswith('.pdf') and os.path.abspath(full) not in keep:

@@ -206,10 +206,22 @@ jobs:
            github.event.pull_request.head.repo.full_name == github.repository)
         run: |
           set -eu
+          branch="${{ github.head_ref || github.ref_name }}"
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Автообновление PDF-представлений ($ROUTE)"
-          git push origin "HEAD:${{ github.head_ref || github.ref_name }}"
+          # Ветку мог сдвинуть другой прогон или человек: подтягиваем и пробуем снова.
+          # При конфликте по PDF выигрывает наша свежая выгрузка, остальное берётся с ветки.
+          for attempt in 1 2 3; do
+            if git push origin "HEAD:$branch"; then
+              exit 0
+            fi
+            echo "Ветка ушла вперёд, подтягиваю (попытка $attempt)..."
+            git fetch origin "$branch"
+            git merge -X ours --no-edit "origin/$branch"
+          done
+          echo "::error::Не удалось запушить представления в $branch"
+          exit 1
 
       - name: Представления артефактом
         uses: actions/upload-artifact@v4
