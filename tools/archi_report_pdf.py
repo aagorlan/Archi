@@ -50,18 +50,18 @@ def find_view_image(report_dir, view_id):
             if view_id in name and name.lower().endswith('.png'):
                 return os.path.join(root, name)
 
-    # id встречается в html-странице представления — берём картинку оттуда
+    # страница самого представления: имя файла содержит id — берём картинку оттуда.
+    # Страницы, где id лишь упомянут (списки, оглавления), сознательно не трогаем:
+    # чужая картинка в представлении хуже, чем её отсутствие.
     for root, _dirs, names in os.walk(report_dir):
         for name in names:
-            if not name.lower().endswith(('.html', '.htm')):
+            if view_id not in name or not name.lower().endswith(('.html', '.htm')):
                 continue
-            path = os.path.join(root, name)
             try:
-                with open(path, encoding='utf-8', errors='ignore') as fh:
+                with open(os.path.join(root, name), encoding='utf-8',
+                          errors='ignore') as fh:
                     text = fh.read()
             except IOError:
-                continue
-            if view_id not in text:
                 continue
             for src in re.findall(r'<img[^>]+src="([^"]+)"', text, re.I):
                 image = os.path.normpath(os.path.join(root, src))
