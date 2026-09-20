@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+tools/.export.tmp.pdf
+.archi-dist/

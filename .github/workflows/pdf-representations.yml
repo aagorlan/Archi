@@ -1,0 +1,240 @@
+name: Представления схем (PDF)
+
+# Формирование PDF-представлений на сервере GitHub.
+#
+# Три пути, по убыванию точности; берётся первый доступный:
+#   1. Archi + плагин jArchi  — векторный PDF, текст остаётся текстом.
+#      Собранный jArchi публично не раздаётся (доступен патронам проекта),
+#      поэтому ссылку на него надо задать самим: секрет или переменная
+#      репозитория JARCHI_URL.
+#   2. Archi без плагина      — картинка представления из HTML-отчёта Archi:
+#      вид ровно как в редакторе, но PDF растровый.
+#   3. Встроенный рендер репозитория — когда Archi поднять не удалось.
+#      Представления, выгруженные из Archi, он не перерисовывает: они будут
+#      помечены как требующие повторного экспорта, и сборка станет красной.
+#
+# Правило: docs/05-Правило-PDF-представлений.md
+#
+# Переменные и секреты (Settings → Secrets and variables → Actions):
+#   ARCHI_URL   — прямая ссылка на Archi-Linux64-*.tgz (иначе определяется сама)
+#   JARCHI_URL  — ссылка на jArchi (*.archiplugin или *.zip); без неё путь 2
+
+on:
+  push:
+    paths:
+      - '**/*.archimate'
+      - 'tools/**'
+      - '.github/workflows/pdf-representations.yml'
+  pull_request:
+    paths:
+      - '**/*.archimate'
+      - 'tools/**'
+      - '.github/workflows/pdf-representations.yml'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Перерисовать всё резервным рендером, если Archi недоступен'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pdf-views-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  ARCHI_URL: ${{ vars.ARCHI_URL }}
+  JARCHI_URL: ${{ secrets.JARCHI_URL || vars.JARCHI_URL }}
+  ARCHI_HOME: ${{ github.workspace }}/.archi-dist/Archi
+
+jobs:
+  views:
+    name: Выгрузка представлений
+    runs-on: ubuntu-latest
+    steps:
+      - name: Получить репозиторий
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.ref_name }}
+          fetch-depth: 0
+
+      - name: Системные пакеты
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends xvfb fonts-liberation unzip
+          # Archi рисует через SWT/GTK; вебкит нужен не всегда — ставим необязательно
+          sudo apt-get install -y --no-install-recommends libwebkit2gtk-4.1-0 || true
+
+      - name: Шрифт Selawik вместо Segoe UI
+        continue-on-error: true
+        run: |
+          # Selawik — открытый шрифт Microsoft, метрически совместимый с Segoe UI,
+          # которым размечены схемы. Без него подписи переносятся не так, как в Archi.
+          set -eu
+          url=$(curl -fsSL https://api.github.com/repos/microsoft/Selawik/releases \
+                | grep -oE '"browser_download_url": *"[^"]+\.zip"' \
+                | head -1 | cut -d'"' -f4 || true)
+          if [ -z "$url" ]; then
+            echo "::warning::Не нашёл дистрибутив Selawik — подписи могут переноситься иначе, чем в Archi"
+            exit 1
+          fi
+          curl -fsSL -o /tmp/selawik.zip "$url"
+          mkdir -p ~/.fonts
+          unzip -oj /tmp/selawik.zip '*.ttf' -d ~/.fonts
+          mkdir -p ~/.config/fontconfig
+          cat > ~/.config/fontconfig/fonts.conf <<'XML'
+          <?xml version="1.0"?>
+          <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+          <fontconfig>
+            <alias binding="same">
+              <family>Segoe UI</family>
+              <accept><family>Selawik</family></accept>
+            </alias>
+          </fontconfig>
+          XML
+          fc-cache -f >/dev/null
+          fc-match "Segoe UI"
+
+      - name: Ссылки на дистрибутивы
+        id: dist
+        run: |
+          set -eu
+          archi="${ARCHI_URL:-}"
+          if [ -z "$archi" ]; then
+            archi=$(curl -fsSL https://www.archimatetool.com/download/ \
+                    | grep -oE "https?://[^\"'<> ]*Archi-Linux64[^\"'<> ]*\.tgz" \
+                    | head -1 || true)
+          fi
+          jarchi="${JARCHI_URL:-}"
+          echo "Archi:  ${archi:-НЕ НАЙДЕНО}"
+          echo "jArchi: ${jarchi:-не задан (будет путь через HTML-отчёт Archi)}"
+          echo "archi=$archi" >> "$GITHUB_OUTPUT"
+          echo "jarchi=$jarchi" >> "$GITHUB_OUTPUT"
+          echo "key=$(printf '%s' "$archi" | sha256sum | cut -c1-16)" >> "$GITHUB_OUTPUT"
+          if [ -z "$archi" ]; then
+            echo "::warning::Не удалось определить ссылку на Archi. Задайте переменную репозитория ARCHI_URL."
+            exit 1
+          fi
+        continue-on-error: true
+
+      - name: Кеш дистрибутива Archi
+        if: steps.dist.outcome == 'success'
+        uses: actions/cache@v4
+        with:
+          path: .archi-dist
+          key: archi-${{ steps.dist.outputs.key }}
+
+      - name: Установка Archi
+        id: archi
+        if: steps.dist.outcome == 'success'
+        continue-on-error: true
+        run: |
+          set -eu
+          if [ ! -x "$ARCHI_HOME/Archi" ]; then
+            mkdir -p .archi-dist
+            curl -fsSL -o /tmp/archi.tgz "${{ steps.dist.outputs.archi }}"
+            tar -xzf /tmp/archi.tgz -C .archi-dist
+          fi
+
+          home="$ARCHI_HOME"
+          if [ ! -x "$home/Archi" ]; then
+            binary=$(find .archi-dist -maxdepth 3 -type f -name Archi -perm -u+x | head -1)
+            if [ -z "$binary" ]; then
+              echo "::error::В дистрибутиве не нашёлся исполняемый файл Archi"
+              exit 1
+            fi
+            home=$(cd "$(dirname "$binary")" && pwd)
+          fi
+          echo "ARCHI_HOME=$home" >> "$GITHUB_ENV"
+          echo "Archi: $home"
+
+      - name: Установка плагина jArchi
+        id: jarchi
+        if: steps.archi.outcome == 'success' && steps.dist.outputs.jarchi != ''
+        continue-on-error: true
+        run: |
+          set -eu
+          curl -fsSL -o /tmp/jarchi.zip "${{ steps.dist.outputs.jarchi }}"
+          rm -rf /tmp/jarchi && mkdir -p /tmp/jarchi
+          unzip -oq /tmp/jarchi.zip -d /tmp/jarchi
+          mkdir -p "$ARCHI_HOME/dropins"
+          find /tmp/jarchi -name '*.jar' -exec cp {} "$ARCHI_HOME/dropins/" \;
+          find /tmp/jarchi -maxdepth 1 -mindepth 1 -type d -exec cp -r {} "$ARCHI_HOME/dropins/" \;
+          ls "$ARCHI_HOME/dropins"
+
+      - name: Выгрузка через jArchi (векторный PDF)
+        id: export_jarchi
+        if: steps.jarchi.outcome == 'success'
+        continue-on-error: true
+        run: |
+          ARCHI="$ARCHI_HOME/Archi" tools/archi_export_views.sh
+          echo "ROUTE=Archi + jArchi" >> "$GITHUB_ENV"
+
+      - name: Выгрузка через HTML-отчёт Archi (картинка Archi)
+        id: export_report
+        if: steps.archi.outcome == 'success' && steps.export_jarchi.outcome != 'success'
+        continue-on-error: true
+        run: |
+          ARCHI="$ARCHI_HOME/Archi" tools/archi_export_report.sh
+          echo "ROUTE=HTML-отчёт Archi" >> "$GITHUB_ENV"
+
+      - name: Резервный рендер репозитория
+        if: steps.export_jarchi.outcome != 'success' && steps.export_report.outcome != 'success'
+        run: |
+          echo "::warning::Archi на раннере поднять не удалось — включён резервный рендер репозитория."
+          python3 tools/archi_export_pdf.py ${{ inputs.force && '--force' || '' }}
+          echo "ROUTE=резервный рендер" >> "$GITHUB_ENV"
+
+      - name: Изменения представлений
+        id: diff
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "changed=no" >> "$GITHUB_OUTPUT"
+            echo "Представления актуальны, изменений нет."
+          else
+            echo "changed=yes" >> "$GITHUB_OUTPUT"
+            git diff --cached --stat
+          fi
+
+      - name: Коммит представлений в ветку
+        if: >-
+          steps.diff.outputs.changed == 'yes' &&
+          (github.event_name != 'pull_request' ||
+           github.event.pull_request.head.repo.full_name == github.repository)
+        run: |
+          set -eu
+          branch="${{ github.head_ref || github.ref_name }}"
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Автообновление PDF-представлений ($ROUTE)"
+          # Ветку мог сдвинуть другой прогон или человек: подтягиваем и пробуем снова.
+          # При конфликте по PDF выигрывает наша свежая выгрузка, остальное берётся с ветки.
+          for attempt in 1 2 3; do
+            if git push origin "HEAD:$branch"; then
+              exit 0
+            fi
+            echo "Ветка ушла вперёд, подтягиваю (попытка $attempt)..."
+            git fetch origin "$branch"
+            git merge -X ours --no-edit "origin/$branch"
+          done
+          echo "::error::Не удалось запушить представления в $branch"
+          exit 1
+
+      - name: Представления артефактом
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdf-представления
+          path: |
+            **/*.pdf
+            pdf-представления.json
+            !.archi-dist/**
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Итоговая проверка правила
+        run: |
+          echo "Способ выгрузки: ${ROUTE:-не определён}"
+          python3 tools/archi_export_pdf.py --check
