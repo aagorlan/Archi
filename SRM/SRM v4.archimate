@@ -79,7 +79,9 @@
     <element xsi:type="archimate:ApplicationFunction" name="Управление сервисом" id="id-4b401a78726644528161b6bcb3c6e509"/>
     <element xsi:type="archimate:ApplicationComponent" name="СПАРК" id="id-e6e4f2a3657f4f668e6ef17a799af818"/>
     <element xsi:type="archimate:ApplicationFunction" name="Проверка поставщиков" id="id-d1c850a444684e40a5d2448709bf8715"/>
-    <element xsi:type="archimate:ApplicationComponent" name="ЭДО (Контур.Диадок)" id="id-236e3808f43048568b7208fb7a45c7be"/>
+    <element xsi:type="archimate:ApplicationComponent" name="ЮЗЭДО" id="id-236e3808f43048568b7208fb7a45c7be">
+      <property key="Platform" value="Контур.Диадок"/>
+    </element>
     <element xsi:type="archimate:ApplicationFunction" name="Подписание договора с поставщиком" id="id-64b677b10bad4dcb8bf9c83b857654c5"/>
     <element xsi:type="archimate:ApplicationComponent" name="APS" id="id-a9c487dabd5c4579b6c7b24c2e110da6"/>
     <element xsi:type="archimate:ApplicationFunction" name="?" id="id-3f670dae2ae446a28678d6089508dae2"/>
