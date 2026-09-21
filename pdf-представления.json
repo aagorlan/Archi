@@ -46,15 +46,15 @@
     "ITAM/ITAM_Актуальное.pdf": {
       "модель": "ITAM/ITAM.archimate",
       "представление": "Актуальное",
-      "отпечаток": "e29cd7863c0baaec2d1090d77c96462e4a481453f8d6a7e5c6af22442faea944",
-      "pdf": "00b1bacf043437ed8b9409ee0731643eb602686992cbcc69724c22ae05b1119d",
+      "отпечаток": "5e6097fc18b4b1905cf38041dc06735f493179db33c3b9994e0fade5e94ffc31",
+      "pdf": "a0c9e92045ce000f7d9cb4e43db5d84caf0cbce2cc3edc596a289b4eac25d3da",
       "рендер": "archi-report"
     },
     "ITAM/ITAM_Целевое.pdf": {
       "модель": "ITAM/ITAM.archimate",
       "представление": "Целевое",
-      "отпечаток": "3aa8adcd8573964e1596a42f27ca3ea4e7cfabde050c6b9742aed875fda10541",
-      "pdf": "bb1bf0321de8f7a717b27f5ffa9ef4543a86cf041575c0d820cf4569c2fef6e1",
+      "отпечаток": "ed08207a9629341e9698b441c677e44dac5423b3892fee57aec806191ba1e837",
+      "pdf": "59c01a6681b61eb4c7ddcfd81fb45b3697a59c3f401c2708af26077ac6f5f39a",
       "рендер": "archi-report"
     },
     "Jira/Jira_Текущее состояние.pdf": {
@@ -109,15 +109,15 @@
     "SRM/SRM_SRM Инициаторы.pdf": {
       "модель": "SRM/SRM v4.archimate",
       "представление": "SRM Инициаторы",
-      "отпечаток": "a6dfd07bd0bb0ad44211ecf7fb6a4400c85d3a33e285a7c9a51e4e1bd1f2a668",
-      "pdf": "451d8b794f6628eeb97537cb3f9ee707dd595cdfd448972364536026b4051117",
+      "отпечаток": "5676d79a38a6312a7c4b50307f827a145f1f547f468a510366b6635b075d9860",
+      "pdf": "6ea0951d5d69ac832b051ab11143e645c144bee9b2ee7eb20c8499da9d0e7aab",
       "рендер": "archi-report"
     },
     "SRM/SRM_SRM.pdf": {
       "модель": "SRM/SRM v4.archimate",
       "представление": "SRM",
-      "отпечаток": "adec3cf64b8568d91fc45338e787460fabd743f70f9f9f14b1bb1803905fb294",
-      "pdf": "06b286179af4d5d8963c05760efbff07060f9bd711c0ebdbe077f98365dec006",
+      "отпечаток": "f172b25313d52c0fd3648efb5c129f43c7bc18f5ed4303a9f2b256e63b7ff80e",
+      "pdf": "51a32278f5a7ea7c61c083f1b93d75a5ab9edc7a7acb603913f38ee3a1b4fe29",
       "рендер": "archi-report"
     },
     "SRM/SRM_Текущее состояние.pdf": {
@@ -200,8 +200,8 @@
     "Мониторинг/Мониторинг_Целевое.pdf": {
       "модель": "Мониторинг/Мониторинг.archimate",
       "представление": "Целевое",
-      "отпечаток": "384aa5678feb16a8f6da90b73c316a38a9a4f4a5db7c555ae23628bd80f97bb2",
-      "pdf": "614a2d59c04a23302085f7ed61105784683ec202a16b0e5858285e88f0a8f3e2",
+      "отпечаток": "747ba93c32098d876657407753496b570c5ae373ea56fca3c802fba2f3e40139",
+      "pdf": "df811998bdd51cf7b819590602ba62f2cd57d1aa9af335dcb05d5e42f951c1b0",
       "рендер": "archi-report"
     },
     "Разделение ERP/Разделение ERP_Организационная схема.pdf": {
@@ -221,15 +221,15 @@
     "Склады/Склады_География (copy).pdf": {
       "модель": "Склады/WMS.archimate",
       "представление": "География (copy)",
-      "отпечаток": "c7d75da2c381968991bbeaa348abfd3bb910fea35ca11ee59d77cdc0c010ead2",
-      "pdf": "745e94b22e5244ab6c2cfd174accd75b8f086a4d806c2cf144b8410b9ba71b7d",
+      "отпечаток": "27b9e7dedfbbd7bf4a72c60ba36d5a0a273f0c9915492904b2a0d0a6531d8c87",
+      "pdf": "1a4d9329d952a1e39fc47970cadc57d1ea80d6f137fd4375bf8b25ee67dceedc",
       "рендер": "archi-report"
     },
     "Склады/Склады_География.pdf": {
       "модель": "Склады/WMS.archimate",
       "представление": "География",
-      "отпечаток": "8c64d41810b5aaaec4d51671283040cb3fca412f66879ec167463232e7ba8bcf",
-      "pdf": "a1fc6fc2ead70c91c5745865b0e22053b16afb6d7f728ce31c8cdf9ed8827aa5",
+      "отпечаток": "29d0529528bae821c3577bc1f722f18e8f0e3704897fc74f182836b7c739c118",
+      "pdf": "27a114f2e6e0ae9db4a7d5075cf9992abb7ddd9d1bdff27424f66e033a6ef3ae",
       "рендер": "archi-report"
     },
     "Склады/Склады_Текущая архитектура.pdf": {
@@ -242,8 +242,8 @@
     "Склады/Склады_Целевая архитектура.pdf": {
       "модель": "Склады/WMS.archimate",
       "представление": "Целевая архитектура",
-      "отпечаток": "b7185a06cf90e5e9d67d677cf502fd5e8b7136303a700eaf7f58d993cef25d38",
-      "pdf": "5155be332bd05477107fe2ce814c9f44054e68470baea7219290c0af71c721bc",
+      "отпечаток": "a7fc9f570942a8a3a192ffba9924cf2c18f76e26bc661da694953a13d31dd1d8",
+      "pdf": "e494a71dc953ad7026ff8626521d8fa3a1fd96e5440230cfa15b8e5cbda920b7",
       "рендер": "archi-report"
     },
     "ТОиР/ТОиР_Целевая архитектура.pdf": {
