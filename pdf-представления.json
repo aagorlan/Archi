@@ -4,8 +4,8 @@
     "CRM/CRM_MVP.pdf": {
       "модель": "CRM/CRM.archimate",
       "представление": "MVP",
-      "отпечаток": "70c51e4d79386b0a42db8fdcae3ed209584a2617533801ce5b1118a05df49de0",
-      "pdf": "803a05d1c4c8d390de9b4fbca551ece64918ff9014bf5fdf3154014a23021083",
+      "отпечаток": "d188acc296459508d40bcab763d283c7fef86d9d5a51d54d5cb5079b4d41b2f7",
+      "pdf": "f6db9b72e1554c45b49734b28980264d43b85086d2d51400c666fbf27cd20b8e",
       "рендер": "archi-report"
     },
     "CRM/CRM_Актуальное.pdf": {
@@ -25,8 +25,8 @@
     "CRM/CRM_Текущее.pdf": {
       "модель": "CRM/CRM.archimate",
       "представление": "Текущее",
-      "отпечаток": "67028817f921fc96b53a9ead24ee81476ea0f66effe054370b71b1d10fac9dd9",
-      "pdf": "5a102f12420ebb49c7e61cf4c87b6811ad47fe307cef1ab583c4d7e0150eec0c",
+      "отпечаток": "4a2536c559e2d8f7918380bdce6d0c2b565275877efedc02c2d022383170d90a",
+      "pdf": "444781e4604cfa4b024a14bdbc5a943190e3db82c2da7ad7e0a1ebdb3860521a",
       "рендер": "archi-report"
     },
     "CRM/CRM_Хранение файлов.pdf": {
@@ -74,7 +74,7 @@
     "QMS/QMS_Изменение работы.pdf": {
       "модель": "QMS/IQC.archimate",
       "представление": "Изменение работы",
-      "отпечаток": "cab84f0ee88c1e3c6ae13cd0c53ce4848d47d2b28c424095300cedb4fa19d029",
+      "отпечаток": "51a5def8c189bc4cf67a80afa0f2b3872c8598f1b906d4609219d82e392cda86",
       "pdf": "77258d2fe1d9e99cfc9da7758d4974e8e36def9a7765d2e73bdbd7d05ce6283b",
       "рендер": "archi-report"
     },
