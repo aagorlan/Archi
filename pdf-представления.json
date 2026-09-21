@@ -102,8 +102,8 @@
     "SRM/SRM_SRM Закупщики.pdf": {
       "модель": "SRM/SRM v4.archimate",
       "представление": "SRM Закупщики",
-      "отпечаток": "90ddd8e5ddd3fb426efeff6154b625655efa583ffbc334f0c8d6581837df55eb",
-      "pdf": "5c910ce10093f02263490e38f25c938b3760e38e3dd52032cf61cef99d1b4bbd",
+      "отпечаток": "e44307e9aa1ae2d507e18d6d71448c20242ad0196ee3b19c281aadc8f51709ba",
+      "pdf": "b27d90d8631aa4282f8ce48521cb73430e15c6fe1895358e4327d45c3b060e9a",
       "рендер": "archi-report"
     },
     "SRM/SRM_SRM Инициаторы.pdf": {
@@ -116,8 +116,8 @@
     "SRM/SRM_SRM.pdf": {
       "модель": "SRM/SRM v4.archimate",
       "представление": "SRM",
-      "отпечаток": "f172b25313d52c0fd3648efb5c129f43c7bc18f5ed4303a9f2b256e63b7ff80e",
-      "pdf": "51a32278f5a7ea7c61c083f1b93d75a5ab9edc7a7acb603913f38ee3a1b4fe29",
+      "отпечаток": "6ddc1059d37d09567ba4a839d9e4b759f408253c6ac912f69c9b6bb92b781473",
+      "pdf": "7d92bcb74d8f11c60f32032c411ae15da113f8ec1456035a5623aab2d70f5196",
       "рендер": "archi-report"
     },
     "SRM/SRM_Текущее состояние.pdf": {
@@ -200,8 +200,8 @@
     "Мониторинг/Мониторинг_Целевое.pdf": {
       "модель": "Мониторинг/Мониторинг.archimate",
       "представление": "Целевое",
-      "отпечаток": "747ba93c32098d876657407753496b570c5ae373ea56fca3c802fba2f3e40139",
-      "pdf": "df811998bdd51cf7b819590602ba62f2cd57d1aa9af335dcb05d5e42f951c1b0",
+      "отпечаток": "257f5aa42193ab8d4347541f1f29114213e6e511bc690d09e9b8b3279cd92340",
+      "pdf": "0a3556c8c35f3366b6ad8007fe55013c92fb53ab893d29ba52113c8285b2ace9",
       "рендер": "archi-report"
     },
     "Разделение ERP/Разделение ERP_Организационная схема.pdf": {
