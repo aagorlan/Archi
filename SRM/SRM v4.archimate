@@ -41,7 +41,9 @@
     <element xsi:type="archimate:ApplicationFunction" name="Бюджетирование" id="id-866b9a3cead94170bc90dae74bdc6c73"/>
     <element xsi:type="archimate:ApplicationComponent" name="PLM" id="id-22a73d0b779b4dcbabe607105f5620de"/>
     <element xsi:type="archimate:ApplicationFunction" name="BP15. Разработка продуктов" id="id-c0db14bb2bb64f54bccc02d7545fe9c5"/>
-    <element xsi:type="archimate:ApplicationComponent" name="Fine BI" id="id-c655ada700954229a570fa2e023a7771"/>
+    <element xsi:type="archimate:ApplicationComponent" name="BI" id="id-c655ada700954229a570fa2e023a7771">
+      <property key="Platform" value="FineBI"/>
+    </element>
     <element xsi:type="archimate:ApplicationFunction" name="Аналитика и отчетность" id="id-53b7083f3abd4beda3552406607e68ab"/>
     <element xsi:type="archimate:ApplicationFunction" name="BP01. Расчет потребности" id="id-ed005be365eb4f5bbdfb95f94c01c343"/>
     <element xsi:type="archimate:ApplicationFunction" name=" Формирование заявок на закупку" id="id-41fee356760f4aa7a90e8d79f8d10a53"/>
