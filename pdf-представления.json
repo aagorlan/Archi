@@ -4,8 +4,8 @@
     "CRM/CRM_MVP.pdf": {
       "модель": "CRM/CRM.archimate",
       "представление": "MVP",
-      "отпечаток": "4d5d06bb424d8ad2b3681d6ef4fc720b325e4b16d7c305771b64b6d8e7c548e4",
-      "pdf": "ded86dcb927178442d3ba48c757bf266cb95e6f0eaa6c4d29bdbc122dd9367b2",
+      "отпечаток": "70c51e4d79386b0a42db8fdcae3ed209584a2617533801ce5b1118a05df49de0",
+      "pdf": "803a05d1c4c8d390de9b4fbca551ece64918ff9014bf5fdf3154014a23021083",
       "рендер": "archi-report"
     },
     "CRM/CRM_Актуальное.pdf": {
@@ -25,8 +25,8 @@
     "CRM/CRM_Текущее.pdf": {
       "модель": "CRM/CRM.archimate",
       "представление": "Текущее",
-      "отпечаток": "d499859d78c947097d6a974b3baf087c80bb80575fc2dbb0de9883fc4c723de0",
-      "pdf": "fb5e90867e53b2b4834beb649b37cc893368c38fd91c828e6e377635c4a18e33",
+      "отпечаток": "67028817f921fc96b53a9ead24ee81476ea0f66effe054370b71b1d10fac9dd9",
+      "pdf": "5a102f12420ebb49c7e61cf4c87b6811ad47fe307cef1ab583c4d7e0150eec0c",
       "рендер": "archi-report"
     },
     "CRM/CRM_Хранение файлов.pdf": {
@@ -46,7 +46,7 @@
     "ITAM/ITAM_Актуальное.pdf": {
       "модель": "ITAM/ITAM.archimate",
       "представление": "Актуальное",
-      "отпечаток": "7e3de433437bd39e13bb312089876c0153180942e29c7d26144596abb655ce4b",
+      "отпечаток": "e29cd7863c0baaec2d1090d77c96462e4a481453f8d6a7e5c6af22442faea944",
       "pdf": "00b1bacf043437ed8b9409ee0731643eb602686992cbcc69724c22ae05b1119d",
       "рендер": "archi-report"
     },
@@ -74,15 +74,15 @@
     "QMS/QMS_Изменение работы.pdf": {
       "модель": "QMS/IQC.archimate",
       "представление": "Изменение работы",
-      "отпечаток": "82ed4326034584c3467f3ae5a7394db6c07b3c884e489620d50021c43764bfaf",
+      "отпечаток": "cab84f0ee88c1e3c6ae13cd0c53ce4848d47d2b28c424095300cedb4fa19d029",
       "pdf": "77258d2fe1d9e99cfc9da7758d4974e8e36def9a7765d2e73bdbd7d05ce6283b",
       "рендер": "archi-report"
     },
     "QMS/QMS_Целевое.pdf": {
       "модель": "QMS/IQC.archimate",
       "представление": "Целевое",
-      "отпечаток": "245c8a31c864538ecc4f9a3015245e4fafd5f3fdc8cd0f5c88cfb4b57db6fa4c",
-      "pdf": "8777db4b676e598af6515e21746edd3bf5a2a2e2f29e9c4a6cf50ca044b955c4",
+      "отпечаток": "494d1f97c2c1c0b915d2ef65b570f0f25a4a9944be59b145320ea30daf249f51",
+      "pdf": "bc335e8ad54bc060d13150d42216cd3bb0ca35e5fb6910c91226194112caba59",
       "рендер": "archi-report"
     },
     "RPA/RPA_Процесс развертывания робота.pdf": {
@@ -207,43 +207,43 @@
     "Разделение ERP/Разделение ERP_Организационная схема.pdf": {
       "модель": "Разделение ERP/ERP.archimate",
       "представление": "Организационная схема",
-      "отпечаток": "112a390aef0a5fdf50e6d1665649b1e2510c6ee0a3b94fbac3053c25ffd82966",
-      "pdf": "3c96e6563ff957702078eadfe0a70b93260eba6d396d5de44f91436d020a85cd",
+      "отпечаток": "afcf448bcdb2e226b5f6d306077e0a0b6e4c142331f460e320c57871f290f984",
+      "pdf": "9e9f4f89acf3f64f69aea491c56b6f4213382689e22ea0d85ddb8b80caf36bf4",
       "рендер": "archi-report"
     },
     "Разделение ERP/Разделение ERP_Функциональная схема.pdf": {
       "модель": "Разделение ERP/ERP.archimate",
       "представление": "Функциональная схема",
-      "отпечаток": "693879525c18aaa154d51170bfc85231cdf677ac23f15761494be9194d3ce5d0",
-      "pdf": "39efb1652d0ea29b8a9b7b69bf811b78fd38076dfa9221f52fe27dd08b2cafa6",
+      "отпечаток": "a607d075a0b9b53852ecee9d1f2009389a44c9c378b84fbf4d60ccaaa240b054",
+      "pdf": "f4f4b3a86872e3540ab50698989c713096627c0cc85dd62f3cceae5723e17cea",
       "рендер": "archi-report"
     },
     "Склады/Склады_География (copy).pdf": {
       "модель": "Склады/WMS.archimate",
       "представление": "География (copy)",
-      "отпечаток": "864d7c1f2e749362aa1fbf17fab8256e39cd9b07458eedd85f18e7bad5ee0392",
-      "pdf": "f4c4ebc2103315f6708457a00b4e25e7da409cb584e4edcba97393486983ab73",
+      "отпечаток": "c7d75da2c381968991bbeaa348abfd3bb910fea35ca11ee59d77cdc0c010ead2",
+      "pdf": "745e94b22e5244ab6c2cfd174accd75b8f086a4d806c2cf144b8410b9ba71b7d",
       "рендер": "archi-report"
     },
     "Склады/Склады_География.pdf": {
       "модель": "Склады/WMS.archimate",
       "представление": "География",
-      "отпечаток": "0a76c45ef0bd6d3a462f99d816b9faa98b39eaaaf5b4302f62f768bb72dd66f9",
-      "pdf": "21659d9c54addd6a194961c2f4cc18f1e2854e671b3d7bdeddf405b69b390d6e",
+      "отпечаток": "8c64d41810b5aaaec4d51671283040cb3fca412f66879ec167463232e7ba8bcf",
+      "pdf": "a1fc6fc2ead70c91c5745865b0e22053b16afb6d7f728ce31c8cdf9ed8827aa5",
       "рендер": "archi-report"
     },
     "Склады/Склады_Текущая архитектура.pdf": {
       "модель": "Склады/WMS.archimate",
       "представление": "Текущая архитектура",
-      "отпечаток": "5cdcc67ec7dae22b28b236e1e1f2cad80a89a4d3ceda1482ef0b7b859ba55f59",
-      "pdf": "662899b1bf10c63f58246ebffdd0828da83aaf608ff3fdf24f38dc694ae1f3ab",
+      "отпечаток": "afe426dd8d90f32164b2d71fa888a39faecfd5d971347927615410aa18971a5d",
+      "pdf": "4fc777eb8ae298144fb1d289d89bb04668130252101017af172b653c96caa6cd",
       "рендер": "archi-report"
     },
     "Склады/Склады_Целевая архитектура.pdf": {
       "модель": "Склады/WMS.archimate",
       "представление": "Целевая архитектура",
-      "отпечаток": "53eea88883c6e0143fd7a84bc95933ad791af5997a9b402d700def65aa1d2704",
-      "pdf": "d8467762f0e0b8b00b62c78a77e507c274b4967647648467afaf1e8b9d4e1ae4",
+      "отпечаток": "b7185a06cf90e5e9d67d677cf502fd5e8b7136303a700eaf7f58d993cef25d38",
+      "pdf": "5155be332bd05477107fe2ce814c9f44054e68470baea7219290c0af71c721bc",
       "рендер": "archi-report"
     },
     "ТОиР/ТОиР_Целевая архитектура.pdf": {
