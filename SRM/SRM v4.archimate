@@ -69,7 +69,9 @@
     <element xsi:type="archimate:ApplicationComponent" name="Портал поставщиков" id="id-b0bc9569c26d45418179179fe8ec7641"/>
     <element xsi:type="archimate:ApplicationFunction" name="Управление базой поставщиков" id="id-f924deaaba184356b156cd7572743599"/>
     <element xsi:type="archimate:ApplicationFunction" name="Согласование КД" id="id-9e33b49186f14010abc8cb6df9a2bf00"/>
-    <element xsi:type="archimate:ApplicationComponent" name="Naumen ITAM" id="id-78d8a854c5b04d469acab80e815fa121"/>
+    <element xsi:type="archimate:ApplicationComponent" name="ITAM" id="id-78d8a854c5b04d469acab80e815fa121">
+      <property key="Platform" value="Naumen SD"/>
+    </element>
     <element xsi:type="archimate:ApplicationFunction" name="Управление ИТ-активами" id="id-4699c43e29084d78bac40b091f5fd158"/>
     <element xsi:type="archimate:ApplicationComponent" name="Система управления сервисом (Naumen)" id="id-e6103088184247ff8e1cc90084421ebb"/>
     <element xsi:type="archimate:ApplicationFunction" name="Управление сервисом" id="id-4b401a78726644528161b6bcb3c6e509"/>
