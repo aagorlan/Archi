@@ -95,7 +95,9 @@
     <element xsi:type="archimate:ApplicationFunction" name="Платежный календарь (copy)" id="id-edbe0df4a96e4d2eb9732511b57a6dec"/>
     <element xsi:type="archimate:ApplicationFunction" name="Заявка на расходование ДС (copy)" id="id-d2866e621aa14138b89b4cdf35be9420"/>
     <element xsi:type="archimate:ApplicationFunction" name="Регламентированный учет" id="id-fb0caf44ae9145c59d2567e8e6d76840"/>
-    <element xsi:type="archimate:ApplicationComponent" name="1C ЗУП" id="id-998c3e519acc45048209efc27b158a56"/>
+    <element xsi:type="archimate:ApplicationComponent" name="ЗУП" id="id-998c3e519acc45048209efc27b158a56">
+      <property key="Platform" value="1С:ЗУП 3.1"/>
+    </element>
     <element xsi:type="archimate:ApplicationFunction" name="Кадровый учет" id="id-55685c58450e41ca88228c8019e48e6d"/>
     <element xsi:type="archimate:ApplicationFunction" name="Управление ресурсами" id="id-b96013d228c3469b82095321f88114ab"/>
     <element xsi:type="archimate:ApplicationFunction" name="Заявка на расходование ДС (copy)" id="id-2b7a527194934e94b1eae65c3a4e4927"/>
