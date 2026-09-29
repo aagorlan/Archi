@@ -47,15 +47,15 @@
       "модель": "ITAM/ITAM.archimate",
       "представление": "Актуальное",
       "отпечаток": "fed8e6a4c663a6336414180f55fe491011deb878ca32afe26942389cb62448bf",
-      "pdf": "6af1359e1fde9f84c3a580924fcc4ecaf743c20fe39a5d16860f92520ad7b716",
-      "рендер": "python"
+      "pdf": "1e9a77825007a72a0ee253c410f8c6426c4eb140602a28b403ec09b713f5bbb0",
+      "рендер": "archi-report"
     },
     "ITAM/ITAM_Целевое.pdf": {
       "модель": "ITAM/ITAM.archimate",
       "представление": "Целевое",
       "отпечаток": "3c3b8035a51e68a325ad1ad0d67fece9afd2b8d5ba1150fe842fa0cc86afc614",
-      "pdf": "93a24a4d17b50ebfd4488115fec615b39ebafd4a9f113d6b0b139d9d24d4110e",
-      "рендер": "python"
+      "pdf": "837f54cd9dcc951cb72720162ae45ebda9600e0e19ef05eacb7f5132d18599f8",
+      "рендер": "archi-report"
     },
     "Jira/Jira_Текущее состояние.pdf": {
       "модель": "Jira/jira.archimate",
