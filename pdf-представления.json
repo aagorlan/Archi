@@ -46,15 +46,15 @@
     "ITAM/ITAM_Актуальное.pdf": {
       "модель": "ITAM/ITAM.archimate",
       "представление": "Актуальное",
-      "отпечаток": "fed8e6a4c663a6336414180f55fe491011deb878ca32afe26942389cb62448bf",
-      "pdf": "1e9a77825007a72a0ee253c410f8c6426c4eb140602a28b403ec09b713f5bbb0",
+      "отпечаток": "4a329d8f17babc90d22e4968d9bf086b6bebaa65bc30cbb7481ce8b06316942c",
+      "pdf": "5b4ed522ad3036b96ea3a2f3d7f8c197ec79efe4268a9bddaa65a867fe6b51ce",
       "рендер": "archi-report"
     },
     "ITAM/ITAM_Целевое.pdf": {
       "модель": "ITAM/ITAM.archimate",
       "представление": "Целевое",
-      "отпечаток": "3c3b8035a51e68a325ad1ad0d67fece9afd2b8d5ba1150fe842fa0cc86afc614",
-      "pdf": "837f54cd9dcc951cb72720162ae45ebda9600e0e19ef05eacb7f5132d18599f8",
+      "отпечаток": "2db28e24531f978a4f8f9889630dc3ff5a9adf743c283c33056e08aebd4d9741",
+      "pdf": "3e98697e32f384be59afd1ba61a61f9761582f30938f97605ab8a26d50e86e4d",
       "рендер": "archi-report"
     },
     "Jira/Jira_Текущее состояние.pdf": {
