@@ -46,16 +46,16 @@
     "ITAM/ITAM_Актуальное.pdf": {
       "модель": "ITAM/ITAM.archimate",
       "представление": "Актуальное",
-      "отпечаток": "df752ca74cd080273f1ef52ceb0ec4497f4e6bb23e8354666d5ed9c922fdd4d5",
-      "pdf": "a85b4fa46c9358e50ce266d5de15d73e76ce8d0e1cc3f1ca525d12b7573a3a38",
-      "рендер": "archi-report"
+      "отпечаток": "fed8e6a4c663a6336414180f55fe491011deb878ca32afe26942389cb62448bf",
+      "pdf": "6af1359e1fde9f84c3a580924fcc4ecaf743c20fe39a5d16860f92520ad7b716",
+      "рендер": "python"
     },
     "ITAM/ITAM_Целевое.pdf": {
       "модель": "ITAM/ITAM.archimate",
       "представление": "Целевое",
-      "отпечаток": "ed08207a9629341e9698b441c677e44dac5423b3892fee57aec806191ba1e837",
-      "pdf": "59c01a6681b61eb4c7ddcfd81fb45b3697a59c3f401c2708af26077ac6f5f39a",
-      "рендер": "archi-report"
+      "отпечаток": "3c3b8035a51e68a325ad1ad0d67fece9afd2b8d5ba1150fe842fa0cc86afc614",
+      "pdf": "93a24a4d17b50ebfd4488115fec615b39ebafd4a9f113d6b0b139d9d24d4110e",
+      "рендер": "python"
     },
     "Jira/Jira_Текущее состояние.pdf": {
       "модель": "Jira/jira.archimate",
