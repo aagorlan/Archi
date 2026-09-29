@@ -33,13 +33,17 @@
   </folder>
   <folder name="Application" id="id-4a13c2fd2f4345a284bb33b4748c23d9" type="application">
     <element xsi:type="archimate:ApplicationComponent" name="SRM - система управления взаимоотношениями с поставщиками" id="id-9e43b6a3f1784e12b12db3e0e951c99a"/>
-    <element xsi:type="archimate:ApplicationComponent" name="1C ERP" id="id-3d9221e140b24719bd7e86a9692e9fdd"/>
+    <element xsi:type="archimate:ApplicationComponent" name="ERP (Ядро)" id="id-3d9221e140b24719bd7e86a9692e9fdd">
+      <property key="Platform" value="1С:ERP 8.3"/>
+    </element>
     <element xsi:type="archimate:ApplicationComponent" name="СЭД (1C Документооборот)" id="id-af3ceba3dcd44b7dae75fe3abe6ee7f5"/>
     <element xsi:type="archimate:ApplicationComponent" name="Optimacros" id="id-7c978048966f406bb6db02b72c1ab05a"/>
     <element xsi:type="archimate:ApplicationFunction" name="Бюджетирование" id="id-866b9a3cead94170bc90dae74bdc6c73"/>
     <element xsi:type="archimate:ApplicationComponent" name="PLM" id="id-22a73d0b779b4dcbabe607105f5620de"/>
     <element xsi:type="archimate:ApplicationFunction" name="BP15. Разработка продуктов" id="id-c0db14bb2bb64f54bccc02d7545fe9c5"/>
-    <element xsi:type="archimate:ApplicationComponent" name="Fine BI" id="id-c655ada700954229a570fa2e023a7771"/>
+    <element xsi:type="archimate:ApplicationComponent" name="BI" id="id-c655ada700954229a570fa2e023a7771">
+      <property key="Platform" value="FineBI"/>
+    </element>
     <element xsi:type="archimate:ApplicationFunction" name="Аналитика и отчетность" id="id-53b7083f3abd4beda3552406607e68ab"/>
     <element xsi:type="archimate:ApplicationFunction" name="BP01. Расчет потребности" id="id-ed005be365eb4f5bbdfb95f94c01c343"/>
     <element xsi:type="archimate:ApplicationFunction" name=" Формирование заявок на закупку" id="id-41fee356760f4aa7a90e8d79f8d10a53"/>
@@ -67,13 +71,17 @@
     <element xsi:type="archimate:ApplicationComponent" name="Портал поставщиков" id="id-b0bc9569c26d45418179179fe8ec7641"/>
     <element xsi:type="archimate:ApplicationFunction" name="Управление базой поставщиков" id="id-f924deaaba184356b156cd7572743599"/>
     <element xsi:type="archimate:ApplicationFunction" name="Согласование КД" id="id-9e33b49186f14010abc8cb6df9a2bf00"/>
-    <element xsi:type="archimate:ApplicationComponent" name="Naumen ITAM" id="id-78d8a854c5b04d469acab80e815fa121"/>
+    <element xsi:type="archimate:ApplicationComponent" name="ITAM" id="id-78d8a854c5b04d469acab80e815fa121">
+      <property key="Platform" value="Naumen SD"/>
+    </element>
     <element xsi:type="archimate:ApplicationFunction" name="Управление ИТ-активами" id="id-4699c43e29084d78bac40b091f5fd158"/>
     <element xsi:type="archimate:ApplicationComponent" name="Система управления сервисом (Naumen)" id="id-e6103088184247ff8e1cc90084421ebb"/>
     <element xsi:type="archimate:ApplicationFunction" name="Управление сервисом" id="id-4b401a78726644528161b6bcb3c6e509"/>
     <element xsi:type="archimate:ApplicationComponent" name="СПАРК" id="id-e6e4f2a3657f4f668e6ef17a799af818"/>
     <element xsi:type="archimate:ApplicationFunction" name="Проверка поставщиков" id="id-d1c850a444684e40a5d2448709bf8715"/>
-    <element xsi:type="archimate:ApplicationComponent" name="ЭДО (Контур.Диадок)" id="id-236e3808f43048568b7208fb7a45c7be"/>
+    <element xsi:type="archimate:ApplicationComponent" name="ЮЗЭДО" id="id-236e3808f43048568b7208fb7a45c7be">
+      <property key="Platform" value="Контур.Диадок"/>
+    </element>
     <element xsi:type="archimate:ApplicationFunction" name="Подписание договора с поставщиком" id="id-64b677b10bad4dcb8bf9c83b857654c5"/>
     <element xsi:type="archimate:ApplicationComponent" name="APS" id="id-a9c487dabd5c4579b6c7b24c2e110da6"/>
     <element xsi:type="archimate:ApplicationFunction" name="?" id="id-3f670dae2ae446a28678d6089508dae2"/>
@@ -93,7 +101,9 @@
     <element xsi:type="archimate:ApplicationFunction" name="Платежный календарь (copy)" id="id-edbe0df4a96e4d2eb9732511b57a6dec"/>
     <element xsi:type="archimate:ApplicationFunction" name="Заявка на расходование ДС (copy)" id="id-d2866e621aa14138b89b4cdf35be9420"/>
     <element xsi:type="archimate:ApplicationFunction" name="Регламентированный учет" id="id-fb0caf44ae9145c59d2567e8e6d76840"/>
-    <element xsi:type="archimate:ApplicationComponent" name="1C ЗУП" id="id-998c3e519acc45048209efc27b158a56"/>
+    <element xsi:type="archimate:ApplicationComponent" name="ЗУП" id="id-998c3e519acc45048209efc27b158a56">
+      <property key="Platform" value="1С:ЗУП 3.1"/>
+    </element>
     <element xsi:type="archimate:ApplicationFunction" name="Кадровый учет" id="id-55685c58450e41ca88228c8019e48e6d"/>
     <element xsi:type="archimate:ApplicationFunction" name="Управление ресурсами" id="id-b96013d228c3469b82095321f88114ab"/>
     <element xsi:type="archimate:ApplicationFunction" name="Заявка на расходование ДС (copy)" id="id-2b7a527194934e94b1eae65c3a4e4927"/>
@@ -119,7 +129,6 @@
     <element xsi:type="archimate:ApplicationComponent" name="OMS" id="id-9258dd85379c4f7daf4541172a9e758d"/>
     <element xsi:type="archimate:ApplicationFunction" name="Обеспечение среднесрочной потребности" id="id-b825b78e8cba4e8baa859a4f2d556530"/>
     <element xsi:type="archimate:ApplicationFunction" name="Прослеживаемость по компонентам" id="id-26cb5217525d437eb3853f104bbd3dae"/>
-    <element xsi:type="archimate:ApplicationComponent" name="1C ERP" id="id-7243d5588cd2436e85f19d1e480a2131"/>
     <element xsi:type="archimate:ApplicationFunction" name="BP01. Расчет потребности (copy)" id="id-3eed4707e97843709caabe7e3b385589"/>
     <element xsi:type="archimate:ApplicationFunction" name="BP10. Формирование планов закупок (copy)" id="id-8fd8748459ad4cee9e3bf06cb777505b"/>
     <element xsi:type="archimate:ApplicationFunction" name="Учет фактического наличия и управление ресурсами (copy)" id="id-84804e86cf49405c95d533bc15583ae0"/>
@@ -242,15 +251,15 @@
     <element xsi:type="archimate:FlowRelationship" name="DF10.4 Информация о поступлении" id="id-ec07b2ae273f49d1b3bfcfd9412e8568" source="id-9c9cbd061230458e9dbaf4f1e1dd3f52" target="id-e6103088184247ff8e1cc90084421ebb"/>
     <element xsi:type="archimate:AssociationRelationship" id="id-89e4740c5f654ecc8adf6dcb4cdffbb8" source="id-623cab3f049c41f880daa8b9cedc16b4" target="id-9b3b07b5d0a74ff6a4bf0913e03e5441"/>
     <element xsi:type="archimate:AssociationRelationship" id="id-97dabb6277d6435d82bd2616944e6200" source="id-9b3b07b5d0a74ff6a4bf0913e03e5441" target="id-9e43b6a3f1784e12b12db3e0e951c99a"/>
-    <element xsi:type="archimate:AssignmentRelationship" id="id-c4dffe5213b14dbd8932d3166ea543bc" source="id-7243d5588cd2436e85f19d1e480a2131" target="id-8fd8748459ad4cee9e3bf06cb777505b"/>
-    <element xsi:type="archimate:AssignmentRelationship" id="id-466279368e4346b1a492dae6bc233ead" source="id-7243d5588cd2436e85f19d1e480a2131" target="id-3eed4707e97843709caabe7e3b385589"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="id-c4dffe5213b14dbd8932d3166ea543bc" source="id-3d9221e140b24719bd7e86a9692e9fdd" target="id-8fd8748459ad4cee9e3bf06cb777505b"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="id-466279368e4346b1a492dae6bc233ead" source="id-3d9221e140b24719bd7e86a9692e9fdd" target="id-3eed4707e97843709caabe7e3b385589"/>
     <element xsi:type="archimate:AssociationRelationship" id="id-29d91f5880704592a2f5513bd4fca2c6" source="id-04a010a372ea43d2b347bb12d9cad5c1" target="id-31dc77df93a94cc5af65f82d2870925d"/>
     <element xsi:type="archimate:AssociationRelationship" id="id-fef769e92d0241d09491bb16f6fc66a7" source="id-623cab3f049c41f880daa8b9cedc16b4" target="id-9b3b07b5d0a74ff6a4bf0913e03e5441"/>
     <element xsi:type="archimate:AssociationRelationship" id="id-acead71402a14014b8713e382b1f5cac" source="id-3733c909c05c4e7997af77254b79654d" target="id-78d8a854c5b04d469acab80e815fa121"/>
     <element xsi:type="archimate:AssociationRelationship" id="id-ef236a0e5a4b4d40af907d3752a029e2" source="id-d6ebe3dc850249f6a9ddf08284c5448b" target="id-9b3b07b5d0a74ff6a4bf0913e03e5441"/>
     <element xsi:type="archimate:AssociationRelationship" id="id-f92c092a7a804b4a8f058ed46f453c62" source="id-d6ebe3dc850249f6a9ddf08284c5448b" target="id-9e43b6a3f1784e12b12db3e0e951c99a"/>
     <element xsi:type="archimate:FlowRelationship" name="DF25. Список договоров" id="id-229c427efa204b40848ab2d8cec7abf3" source="id-af3ceba3dcd44b7dae75fe3abe6ee7f5" target="id-f924deaaba184356b156cd7572743599"/>
-    <element xsi:type="archimate:FlowRelationship" name="Заявка на долгосрочное/среднесрочное обеспечение" id="id-e9f2ae88ad974bb2ad2fac3dd9c5fc95" source="id-7243d5588cd2436e85f19d1e480a2131" target="id-9e43b6a3f1784e12b12db3e0e951c99a"/>
+    <element xsi:type="archimate:FlowRelationship" name="Заявка на долгосрочное/среднесрочное обеспечение" id="id-e9f2ae88ad974bb2ad2fac3dd9c5fc95" source="id-3d9221e140b24719bd7e86a9692e9fdd" target="id-9e43b6a3f1784e12b12db3e0e951c99a"/>
     <element xsi:type="archimate:CompositionRelationship" id="id-d27011eb71a94436aaac29450a2a9e94" source="id-811c5e5d0b2a46d4bfa3cd276215ab4f" target="id-b2eacfec090b40ca85aa0fa5c715c0f0"/>
     <element xsi:type="archimate:AssociationRelationship" id="id-73c21ca2730c48fba8295c9fefca06d2" source="id-58307f126fbf403f92e758d518cb5d6b" target="id-b2eacfec090b40ca85aa0fa5c715c0f0"/>
     <element xsi:type="archimate:AssociationRelationship" id="id-380430bd21f544c0911a5ff2e4099e0b" source="id-a3f57614bf8f4a50bbeeea1b474657b6" target="id-b2eacfec090b40ca85aa0fa5c715c0f0"/>
@@ -1075,7 +1084,7 @@
           </sourceConnection>
         </child>
       </child>
-      <child xsi:type="archimate:DiagramObject" id="id-b93700159268430697d1de33d6ce9922" fontColor="#ffffff" fillColor="#008000" archimateElement="id-7243d5588cd2436e85f19d1e480a2131">
+      <child xsi:type="archimate:DiagramObject" id="id-b93700159268430697d1de33d6ce9922" fontColor="#ffffff" fillColor="#008000" archimateElement="id-3d9221e140b24719bd7e86a9692e9fdd">
         <bounds x="-834" y="-24" width="252" height="403"/>
         <child xsi:type="archimate:DiagramObject" id="id-9f5cff3b81574069892671a799c70b6d" targetConnections="id-af6f7e72571d45169bba62102a2504a8 id-4d22c517b8504feeb1a4662fc28ebc24" fontColor="#ff0000" fillColor="#ffffff" archimateElement="id-917d69f7528844889f39b433094a41ac">
           <bounds x="24" y="144" width="205" height="61"/>
